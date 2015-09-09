@@ -73,7 +73,6 @@ public class Listener {
 		recorder.init(asrInitParam.getStringConfig(), new RecorderListener());
 
 		// 配置识别参数
-//		final AsrConfig asrConfig = new AsrConfig();
 		// PARAM_KEY_CAP_KEY 设置使用的能力
 		asrConfig.addParam(AsrConfig.PARAM_KEY_CAP_KEY, Sixshot.config.getVoice().getAsrCapKey());
 		// PARAM_KEY_AUDIO_FORMAT 音频格式根据不同的能力使用不用的音频格式
@@ -82,6 +81,8 @@ public class Listener {
 		asrConfig.addParam(AsrConfig.PARAM_KEY_ENCODE, "opus");
 		// 其他配置，此处可以全部选取缺省值
 		asrConfig.addParam(AsrConfig.PARAM_KEY_CAND_NUM, "3");
+		
+		asrConfig.addParam(AsrConfig.PARAM_KEY_VAD_HEAD, "2000");
 		
 		if(recorder.getRecorderState() != ASRCommonRecorder.RECORDER_STATE_IDLE){
 			System.out.println("---listener, 初始化失败了！");

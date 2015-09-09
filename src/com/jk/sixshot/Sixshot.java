@@ -2,7 +2,6 @@ package com.jk.sixshot;
 
 import java.io.File;
 import java.util.List;
-import java.util.Timer;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,7 +10,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.jk.sixshot.organ.auditory.Listener;
+import com.jk.sixshot.organ.auditory.XListener;
 import com.jk.sixshot.organ.language.Speaker;
 import com.jk.sixshot.organ.language.StatementAnalyzer;
 import com.sinovoice.hcicloudsdk.api.HciCloudSys;
@@ -22,7 +24,7 @@ public class Sixshot extends Activity {
 
 	public static Configuration config = null;
 	
-	private Listener  listener = null;
+	private XListener  listener = null;
 	private StatementAnalyzer analyzer = new StatementAnalyzer();
 	private Speaker speaker = null;
 	
@@ -36,6 +38,14 @@ public class Sixshot extends Activity {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		// 设置你申请的应用appid
+		StringBuffer param = new StringBuffer();
+		param.append("appid=5423b564");
+		param.append(",");
+		// 设置使用v5+
+		param.append(SpeechConstant.ENGINE_MODE+"="+SpeechConstant.MODE_MSC);
+		SpeechUtility.createUtility(this, param.toString());
+		
 		super.onCreate(savedInstanceState);
 		init();
 //		try{
@@ -148,7 +158,8 @@ public class Sixshot extends Activity {
 		}
 	}
 	private void initListener(){
-		listener = new Listener(this);
+//		
+		listener = new XListener(this);
 	}
 	
 	private void initSpeaker(){
