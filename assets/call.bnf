@@ -1,8 +1,0 @@
-#BNF+IAT 1.0 UTF-8;
-!grammar poem;
-!slot <cmd>;
-!slot <poems>;
-!start <statment>;
-<statment>:[<cmd>]<poems>;
-<cmd>:背首|备受|倍受|北首|背熟|背书;
-<poems>:登鹳雀楼|黄鹤楼|锄禾|小老鼠|一只小老鼠;

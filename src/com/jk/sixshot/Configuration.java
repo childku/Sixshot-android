@@ -17,9 +17,19 @@ public class Configuration {
 	
 	public class System {
 		
+		public boolean isDebug() {
+			return debug;
+		}
+
+		public void setDebug(boolean debug) {
+			this.debug = debug;
+		}
+
 		private boolean needAuth = false;
 
 		private boolean logable = false;
+		
+		private boolean debug = false;
 		
 		public boolean isNeedAuth() {
 			return needAuth;
@@ -99,6 +109,7 @@ public class Configuration {
     	
     	system.setNeedAuth(Boolean.valueOf(props.getProperty("system.need-auth")));
     	system.setLogable(Boolean.valueOf(props.getProperty("system.logable")));
+    	system.setDebug(Boolean.valueOf(props.getProperty("system.debug")));
     }
 
     private void initVoice(Properties props){

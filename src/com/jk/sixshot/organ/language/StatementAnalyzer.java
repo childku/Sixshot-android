@@ -176,6 +176,8 @@ public class StatementAnalyzer {
 			
 			instruction = new Instruction();
 			instruction.setInstruction(getPoem(poemName));
+		}else if(isCaculate(statement)){
+			instruction = caculate(statement);
 		}else{
 			instruction = new Instruction();
 			instruction.setInstruction(getStatement("不知道怎么说"));
@@ -183,6 +185,40 @@ public class StatementAnalyzer {
 		
 		instructions.add(instruction);
 		return instructions;
+	}
+	
+	private boolean isCaculate(String statement){
+		boolean result = false;
+		if(statement.matches(".*((加.*等于)).*")
+				||statement.matches(".*((加.*得)).*")){
+			return result = true;
+		}
+		return result;
+	}
+	private Instruction caculate(String statement){
+		String result = "等于";
+		String type = "加";
+		if(statement.contains("等于")){
+			result = "等于";
+		}else{
+			result = "得";
+		}
+		
+		if(statement.contains("加上")){
+			type = "加上";
+		}else{
+			type = "加";
+		}
+//		7加4等于
+		int first = Integer.parseInt(statement.substring(0, statement.indexOf(type)));
+		int second = Integer.parseInt(statement.substring(statement.indexOf(type)+1, statement.indexOf(result)));
+		
+		Instruction instruction = new Instruction();
+		int r = first + second;
+		System.out.println("---caculate result: " + r);
+		instruction.setInstruction(result + r);
+		
+		return instruction;
 	}
 	
 	private String getStatement(String key){

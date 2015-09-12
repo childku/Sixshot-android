@@ -2,17 +2,14 @@ package com.jk.sixshot;
 
 import java.io.File;
 import java.util.List;
+import java.util.Timer;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
-import com.jk.sixshot.organ.auditory.Listener;
 import com.jk.sixshot.organ.auditory.XListener;
 import com.jk.sixshot.organ.language.Speaker;
 import com.jk.sixshot.organ.language.StatementAnalyzer;
@@ -30,9 +27,6 @@ public class Sixshot extends Activity {
 	
 	private boolean listenerIdle = true;
 	
-	private Button startBtn;
-	private Button stopBtn;
-	
 	public Sixshot(){
 	}
 	
@@ -48,17 +42,17 @@ public class Sixshot extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		init();
-//		try{
-//			 Timer timer = new Timer();  
-//		     // 在1秒后执行此任务,每次间隔2秒,如果传递一个Data参数,就可以在某个固定的时间执行这个任务.  
-//		     timer.schedule(new Task(this), 1000, 1500);
-//		}catch(Exception e){
-//			e.printStackTrace();
-//			if(e.getMessage().equals("什么也没说")){
-//				System.out.println("---engine, 什么也没说，重新唤醒" );
-//				this.weakup();
-//			}
-//		}
+		try{
+			 Timer timer = new Timer();  
+		     // 在1秒后执行此任务,每次间隔2秒,如果传递一个Data参数,就可以在某个固定的时间执行这个任务.  
+		     timer.schedule(new Task(this), 1000, 1500);
+		}catch(Exception e){
+			e.printStackTrace();
+			if(e.getMessage().equals("什么也没说")){
+				System.out.println("---engine, 什么也没说，重新唤醒" );
+				this.weakup();
+			}
+		}
 	}
 	private void init() {
 		
@@ -72,14 +66,6 @@ public class Sixshot extends Activity {
 	
 	private void initView(){
 		setContentView(R.layout.main);
-
-		startBtn = (Button) findViewById(R.id.start);
-		stopBtn = (Button) findViewById(R.id.stop);
-		startBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				weakup();
-			}
-		});
 	}
 	
 
@@ -244,4 +230,14 @@ public class Sixshot extends Activity {
 // 算数
 // 唱歌
 // 教英语
+	
+	/**
+	 * 1. 词典
+	 * 2. 整合本地识别
+	 * 3. 喇叭
+	 * 4. 组装、运动控制
+	 * 5. 声纹识别
+	 * 6. 人脸识别
+	 * 7. 避障
+	 */
 }

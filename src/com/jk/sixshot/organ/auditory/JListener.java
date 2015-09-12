@@ -16,7 +16,7 @@ import com.sinovoice.hcicloudsdk.recorder.ASRCommonRecorder;
 import com.sinovoice.hcicloudsdk.recorder.ASRCommonRecorder.RecorderEvent;
 import com.sinovoice.hcicloudsdk.recorder.ASRRecorderListener;
 
-public class Listener {
+public class JListener {
 	private static final String TAG = "Listener";
 	
 	private ASRRecorder recorder = new ASRRecorder();
@@ -27,7 +27,7 @@ public class Listener {
 	
 	private Sixshot brain = null;
 	
-	public Listener(Sixshot brain){
+	public JListener(Sixshot brain){
 		this.brain = brain;
 		init();
 	}
