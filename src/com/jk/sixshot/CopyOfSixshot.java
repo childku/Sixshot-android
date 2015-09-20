@@ -1,10 +1,9 @@
 package com.jk.sixshot;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Timer;
 
@@ -17,13 +16,11 @@ import com.iflytek.cloud.SpeechUtility;
 import com.jk.sixshot.organ.auditory.XListener;
 import com.jk.sixshot.organ.language.Speaker;
 import com.jk.sixshot.organ.language.StatementAnalyzer;
-import com.jk.sixshot.util.ShellUtils;
-import com.jk.sixshot.util.ShellUtils.CommandResult;
 import com.sinovoice.hcicloudsdk.api.HciCloudSys;
 import com.sinovoice.hcicloudsdk.common.HciErrorCode;
 import com.sinovoice.hcicloudsdk.common.InitParam;
 
-public class Sixshot extends Activity {
+public class CopyOfSixshot extends Activity {
 
 	public static Configuration config = null;
 	
@@ -33,7 +30,7 @@ public class Sixshot extends Activity {
 	
 	private boolean listenerIdle = true;
 	
-	public Sixshot(){
+	public CopyOfSixshot(){
 	}
 	
 	@Override
@@ -97,7 +94,7 @@ public class Sixshot extends Activity {
 					running = true;
 				}
 				i++;
-				Thread.sleep(2000);
+					Thread.sleep(2000);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,45 +107,7 @@ public class Sixshot extends Activity {
 		String dir = "/sys/class/gpio/gpio97";
 		String command = " echo 1 > value ";
 		
-//		exe(dir, command);
-
-//		List<String> commands = new ArrayList<String>();
-//		commands.add("echo 1 > sys/class/gpio/gpio97/value ");
-//		CommandResult result =  ShellUtils.execCommand(commands, true);
-//		System.out.println("----result.errorMsg:" + result.errorMsg + "----result.successMsg:" + result.successMsg);
-		 DataOutputStream os = null;
-	        try {
-//	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "echo 1 > sys/class/gpio/gpio97/value"});
-//	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "ls"});
-//	        	Process process = Runtime.getRuntime().exec(new String[]{"ls"});
-	        	Process process = Runtime.getRuntime().exec("su");
-	            os = new DataOutputStream(process.getOutputStream());
-	            os.write("ls".getBytes());
-	            os.writeBytes("\n");
-	            os.flush();
-	            
-	            os.writeBytes("exit\n");
-	            os.flush();
-	            
-	            BufferedReader success_in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-	            StringBuffer successBuffer = new StringBuffer();
-	            String line = null;
-	            while ((line = success_in.readLine()) != null) {
-	                successBuffer.append(line+"-");
-	            }
-	            
-	            BufferedReader error_in = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-	            StringBuffer errorBuffer = new StringBuffer();
-	            while ((line = error_in.readLine()) != null) {
-	            	errorBuffer.append(line+"-");
-	            }
-	            
-	            System.out.println("----shell result:" + successBuffer.toString());
-	            
-	            System.out.println("----shell error:" + errorBuffer.toString());
-	        }catch(Exception e){
-	        	e.printStackTrace();
-	        }
+		exe(dir, command);
 	}
 	
 	private void stop(){
@@ -156,21 +115,7 @@ public class Sixshot extends Activity {
 		String dir = "/sys/class/gpio/gpio97";
 		String command = " echo 0 > value ";
 		
-//		exe(dir, command);
-		
-		 DataOutputStream os = null;
-	        try {
-	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "echo 0 > sys/class/gpio/gpio97/value"});
-	            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-	            StringBuffer stringBuffer = new StringBuffer();
-	            String line = null;
-	            while ((line = in.readLine()) != null) {
-	                stringBuffer.append(line+"-");
-	            }
-	            System.out.println("----shell result:" + stringBuffer.toString());
-	        }catch(Exception e){
-	        	e.printStackTrace();
-	        }
+		exe(dir, command);
 	}
 	
 	private void exe(String dir, String ...command){
@@ -178,25 +123,32 @@ public class Sixshot extends Activity {
         Process proc = null;
 
         File directory = new File(dir);
-        String commands[] = new String[command.length + 3];
-//        String[] cmdline = { "sh", "-c", "echo $BOOTCLASSPATH" }; 
-        commands[0] = " su ";
-        commands[1] = " sh ";
-        commands[2] = " -c ";
+        String commands[] = new String[command.length + 1];
+        commands[0] = "su";
         
         StringBuilder cmds = new StringBuilder();
         
         for(int i = 0; i < command.length; i++){
-        	commands[i + 3] = " \"" + command[i] + "\"";
+        	commands[i + 1] = " " + command[i];
         }
         
         for(int i = 0; i < commands.length; i++){
         	cmds.append(commands[i]);
-//        	cmds.append("\n");
+        	cmds.append("\n");
         }
         try {
         	System.out.println("------execute command is : " + cmds.toString());
-        	proc = runtime.exec(commands, null, directory);
+//        	proc = runtime.exec(commands, null, directory);
+        	proc = runtime.exec(" su ");
+            final OutputStreamWriter out = new OutputStreamWriter(proc.getOutputStream());   
+            // Write the script to be executed   
+            out.write(cmds.toString());   
+            // Ensure that the last character is an "enter"   
+            out.write("\n");   
+            out.flush();   
+            // Terminate the "su" process   
+            out.write("exit\n");   
+            out.flush(); 
             if (proc.waitFor() != 0) {
                 System.err.println("exit value = " + proc.exitValue());
             }
@@ -293,11 +245,11 @@ public class Sixshot extends Activity {
 	}
 	private void initListener(){
 //		
-		listener = new XListener(this);
+//		listener = new XListener(this);
 	}
 	
 	private void initSpeaker(){
-		speaker = new Speaker(this);
+//		speaker = new Speaker(this);
 	}
 	
 	
@@ -342,9 +294,9 @@ public class Sixshot extends Activity {
 	}
 	
     static class Task extends java.util.TimerTask {
-    	private Sixshot brain = null;
+    	private CopyOfSixshot brain = null;
     	
-    	public Task(Sixshot brain){
+    	public Task(CopyOfSixshot brain){
     		this.brain = brain;
     	}
         @Override  
