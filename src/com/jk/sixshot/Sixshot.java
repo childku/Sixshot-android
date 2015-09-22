@@ -14,6 +14,7 @@ import android.os.Environment;
 
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
+import com.jk.sixshot.motion.Motion;
 import com.jk.sixshot.organ.auditory.XListener;
 import com.jk.sixshot.organ.language.Speaker;
 import com.jk.sixshot.organ.language.StatementAnalyzer;
@@ -32,6 +33,8 @@ public class Sixshot extends Activity {
 	private Speaker speaker = null;
 	
 	private boolean listenerIdle = true;
+	
+	private Motion motion = null;
 	
 	public Sixshot(){
 	}
@@ -72,36 +75,12 @@ public class Sixshot extends Activity {
 	}
 	
 	private void initMotionSystem(){
-		try {
-//			String command = " echo 97 > export ";
-//			String dir = "/sys/class/gpio";
-//			exe(dir, command);
-//			
-//			exe(dir, " ls ");
-			
-//			Thread.sleep(1000);
-//			
-//			dir = "/sys/class/gpio/gpio97";
-//			command = " echo out > direction  ";
-//			exe(dir, command);
-//			
-			int i = 0;
-			boolean running = false;
-			
-			while( i<20){
-				if(running){
-					stop();
-					running = false;
-				}else{
-					run();
-					running = true;
-				}
-				i++;
-				Thread.sleep(2000);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		motion = new Motion();
+		motion.forward();
+		motion.backward();
+		motion.left();
+		motion.right();
+		motion.stop();
 		
 	}
 	
@@ -121,15 +100,17 @@ public class Sixshot extends Activity {
 //	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "echo 1 > sys/class/gpio/gpio97/value"});
 //	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "ls"});
 //	        	Process process = Runtime.getRuntime().exec(new String[]{"ls"});
-	        	Process process = Runtime.getRuntime().exec("su");
-	            os = new DataOutputStream(process.getOutputStream());
-	            os.write("ls".getBytes());
-	            os.writeBytes("\n");
-	            os.flush();
+	        	Process process = Runtime.getRuntime().exec("su -c 'echo $PATH'", null, new File("sys/class/gpio/gpio97"));
+//	            os = new DataOutputStream(process.getOutputStream());
+//	            os.write("ls".getBytes());
+//	            os.writeBytes("\n");
+//	            os.flush();
+//	            
+//	            os.writeBytes("exit\n");
+//	            os.flush();
 	            
-	            os.writeBytes("exit\n");
-	            os.flush();
-	            
+	        	int waitfor = process.waitFor();
+	        	System.out.println("----shell waitfor:" + waitfor);
 	            BufferedReader success_in = new BufferedReader(new InputStreamReader(process.getInputStream()));
 	            StringBuffer successBuffer = new StringBuffer();
 	            String line = null;
@@ -160,7 +141,8 @@ public class Sixshot extends Activity {
 		
 		 DataOutputStream os = null;
 	        try {
-	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "echo 0 > sys/class/gpio/gpio97/value"});
+//	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "echo 0 > sys/class/gpio/gpio97/value"});
+	        	Process process = Runtime.getRuntime().exec("su -c 'echo 0 > value'", null, new File("sys/class/gpio/gpio97"));
 	            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
 	            StringBuffer stringBuffer = new StringBuffer();
 	            String line = null;
@@ -378,6 +360,9 @@ public class Sixshot extends Activity {
 // 算数
 // 唱歌
 // 教英语
+	
+//	android update project -p . --target android-19 -s
+//	ndk-build
 	
 	/**
 	 * 1. 词典

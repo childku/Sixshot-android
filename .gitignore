@@ -1,2 +1,7 @@
 bin/
 .DS_Store
+build.xml
+jni/
+local.properties
+obj/
+proguard-project.txt
