@@ -7,11 +7,6 @@ public class Motion
 	}
     private void initMotion() {
         init();
-//        forward();
-//        backward();
-//        left();
-//        right();
-//        stop();
     }
 
     public native void  init();
@@ -21,6 +16,22 @@ public class Motion
     public native void  left();
     public native void  right();
     public native void  stop();
+    
+    public void move(String direction){
+    	if("forward".equals(direction)){
+    		forward();
+    	}else if("backward".equals(direction)){
+    		backward();
+    	}else if("left".equals(direction)){
+    		left();
+    	}else if("right".equals(direction)){
+    		right();
+    	}else if("stop".equals(direction)){
+    		stop();
+    	}else{
+    		throw new IllegalArgumentException("不支持此种运动方式【" + direction+ "】");
+    	}
+    }
 
     static {
         System.loadLibrary("motion");

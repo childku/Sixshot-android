@@ -178,6 +178,8 @@ public class StatementAnalyzer {
 			instruction.setInstruction(getPoem(poemName));
 		}else if(isCaculate(statement)){
 			instruction = caculate(statement);
+		}else if(isMotion(statement)){
+			instruction = judgeDirection(statement);
 		}else{
 			instruction = new Instruction();
 			instruction.setInstruction(getStatement("不知道怎么说"));
@@ -195,6 +197,7 @@ public class StatementAnalyzer {
 		}
 		return result;
 	}
+
 	private Instruction caculate(String statement){
 		String result = "等于";
 		String type = "加";
@@ -218,6 +221,52 @@ public class StatementAnalyzer {
 		System.out.println("---caculate result: " + r);
 		instruction.setInstruction(result + r);
 		
+		return instruction;
+	}
+	
+	private boolean isMotion(String statement){
+		boolean result = false;
+		String article_a = "往";
+		String article_b = "向";
+		String forward = "前";
+		String backward = "后";
+		String left = "左";
+		String right = "右";	
+		
+		if(statement.contains(article_a+forward)
+				||statement.contains(article_a+forward)
+				||statement.contains(article_a+backward)
+				||statement.contains(article_a+left)
+				||statement.contains(article_a+right)
+				||statement.contains(article_b+forward)
+				||statement.contains(article_b+backward)
+				||statement.contains(article_b+left)
+				||statement.contains(article_b+right)
+				||statement.contains("停")
+				||statement.contains("停下")
+				){
+			result = true;
+		}
+		return result;
+	}
+	
+	private Instruction judgeDirection(String statement){
+		String direction = "";
+		if(statement.contains("前")){
+			direction = "forward";
+		}else if(statement.contains("后")){
+			direction = "backward";
+		}else if(statement.contains("左")){
+			direction = "left";
+		}else if(statement.contains("右")){
+			direction = "right";
+		}else if(statement.contains("停")){
+			direction = "stop";
+		}
+		
+		Instruction instruction = new Instruction();
+		instruction.setType(Instruction.INSTRUCTION_TYPE_MOTION);
+		instruction.setInstruction(direction);
 		return instruction;
 	}
 	

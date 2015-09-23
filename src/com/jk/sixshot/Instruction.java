@@ -4,7 +4,7 @@ public class Instruction {
 	
 	public static final String INSTRUCTION_TYPE_SPEAK = "speak";
 	
-	public static final String INSTRUCTION_TYPE_WAKL = "walk";
+	public static final String INSTRUCTION_TYPE_MOTION = "motion";
 	
 	private String type = INSTRUCTION_TYPE_SPEAK;
 	

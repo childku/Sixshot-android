@@ -1,10 +1,6 @@
 package com.jk.sixshot;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 
@@ -18,8 +14,6 @@ import com.jk.sixshot.motion.Motion;
 import com.jk.sixshot.organ.auditory.XListener;
 import com.jk.sixshot.organ.language.Speaker;
 import com.jk.sixshot.organ.language.StatementAnalyzer;
-import com.jk.sixshot.util.ShellUtils;
-import com.jk.sixshot.util.ShellUtils.CommandResult;
 import com.sinovoice.hcicloudsdk.api.HciCloudSys;
 import com.sinovoice.hcicloudsdk.common.HciErrorCode;
 import com.sinovoice.hcicloudsdk.common.InitParam;
@@ -53,7 +47,7 @@ public class Sixshot extends Activity {
 		init();
 		try{
 			 Timer timer = new Timer();  
-		     // 在1秒后执行此任务,每次间隔2秒,如果传递一个Data参数,就可以在某个固定的时间执行这个任务.  
+		     // 在1秒后执行此任务,每次间隔2秒,如果传递一个Data参数,就可以在某个固定的时间执行这个任务.
 		     timer.schedule(new Task(this), 1000, 1500);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -76,124 +70,18 @@ public class Sixshot extends Activity {
 	
 	private void initMotionSystem(){
 		motion = new Motion();
-		motion.forward();
-		motion.backward();
-		motion.left();
-		motion.right();
-		motion.stop();
+//		motion.forward();
+//		motion.backward();
+//		motion.left();
+//		motion.right();
+//		motion.stop();
 		
 	}
 	
-	private void run(){
-		System.out.println("------to running............");
-		String dir = "/sys/class/gpio/gpio97";
-		String command = " echo 1 > value ";
-		
-//		exe(dir, command);
-
-//		List<String> commands = new ArrayList<String>();
-//		commands.add("echo 1 > sys/class/gpio/gpio97/value ");
-//		CommandResult result =  ShellUtils.execCommand(commands, true);
-//		System.out.println("----result.errorMsg:" + result.errorMsg + "----result.successMsg:" + result.successMsg);
-		 DataOutputStream os = null;
-	        try {
-//	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "echo 1 > sys/class/gpio/gpio97/value"});
-//	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "ls"});
-//	        	Process process = Runtime.getRuntime().exec(new String[]{"ls"});
-	        	Process process = Runtime.getRuntime().exec("su -c 'echo $PATH'", null, new File("sys/class/gpio/gpio97"));
-//	            os = new DataOutputStream(process.getOutputStream());
-//	            os.write("ls".getBytes());
-//	            os.writeBytes("\n");
-//	            os.flush();
-//	            
-//	            os.writeBytes("exit\n");
-//	            os.flush();
-	            
-	        	int waitfor = process.waitFor();
-	        	System.out.println("----shell waitfor:" + waitfor);
-	            BufferedReader success_in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-	            StringBuffer successBuffer = new StringBuffer();
-	            String line = null;
-	            while ((line = success_in.readLine()) != null) {
-	                successBuffer.append(line+"-");
-	            }
-	            
-	            BufferedReader error_in = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-	            StringBuffer errorBuffer = new StringBuffer();
-	            while ((line = error_in.readLine()) != null) {
-	            	errorBuffer.append(line+"-");
-	            }
-	            
-	            System.out.println("----shell result:" + successBuffer.toString());
-	            
-	            System.out.println("----shell error:" + errorBuffer.toString());
-	        }catch(Exception e){
-	        	e.printStackTrace();
-	        }
+	private void move(String direction){
+		motion.move(direction);
 	}
-	
-	private void stop(){
-		System.out.println("------to stop............");
-		String dir = "/sys/class/gpio/gpio97";
-		String command = " echo 0 > value ";
 		
-//		exe(dir, command);
-		
-		 DataOutputStream os = null;
-	        try {
-//	        	Process process = Runtime.getRuntime().exec(new String[]{"su", "echo 0 > sys/class/gpio/gpio97/value"});
-	        	Process process = Runtime.getRuntime().exec("su -c 'echo 0 > value'", null, new File("sys/class/gpio/gpio97"));
-	            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-	            StringBuffer stringBuffer = new StringBuffer();
-	            String line = null;
-	            while ((line = in.readLine()) != null) {
-	                stringBuffer.append(line+"-");
-	            }
-	            System.out.println("----shell result:" + stringBuffer.toString());
-	        }catch(Exception e){
-	        	e.printStackTrace();
-	        }
-	}
-	
-	private void exe(String dir, String ...command){
-        Runtime runtime = Runtime.getRuntime();
-        Process proc = null;
-
-        File directory = new File(dir);
-        String commands[] = new String[command.length + 3];
-//        String[] cmdline = { "sh", "-c", "echo $BOOTCLASSPATH" }; 
-        commands[0] = " su ";
-        commands[1] = " sh ";
-        commands[2] = " -c ";
-        
-        StringBuilder cmds = new StringBuilder();
-        
-        for(int i = 0; i < command.length; i++){
-        	commands[i + 3] = " \"" + command[i] + "\"";
-        }
-        
-        for(int i = 0; i < commands.length; i++){
-        	cmds.append(commands[i]);
-//        	cmds.append("\n");
-        }
-        try {
-        	System.out.println("------execute command is : " + cmds.toString());
-        	proc = runtime.exec(commands, null, directory);
-            if (proc.waitFor() != 0) {
-                System.err.println("exit value = " + proc.exitValue());
-            }
-            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            StringBuffer stringBuffer = new StringBuffer();
-            String line = null;
-            while ((line = in.readLine()) != null) {
-                stringBuffer.append(line+"-");
-            }
-            System.out.println("----shell result:" + stringBuffer.toString());
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-	}
-	
 	private void initView(){
 		setContentView(R.layout.main);
 	}
@@ -274,7 +162,6 @@ public class Sixshot extends Activity {
 		}
 	}
 	private void initListener(){
-//		
 		listener = new XListener(this);
 	}
 	
@@ -300,8 +187,8 @@ public class Sixshot extends Activity {
 		for(Instruction instruction:instructions){
 			if(instruction.getType().equals(Instruction.INSTRUCTION_TYPE_SPEAK)){
 				speak(instruction.getInstruction());
-			}else{
-				
+			}else if(instruction.getType().equals(Instruction.INSTRUCTION_TYPE_MOTION)){
+				move(instruction.getInstruction());
 			}
 		}
 	}
@@ -340,7 +227,6 @@ public class Sixshot extends Activity {
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-		
 	}
 
 	@Override
