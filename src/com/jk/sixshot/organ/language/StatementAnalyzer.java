@@ -180,6 +180,8 @@ public class StatementAnalyzer {
 			instruction = caculate(statement);
 		}else if(isMotion(statement)){
 			instruction = judgeDirection(statement);
+		}else if(isEnglish(statement)){
+			instruction = translate(statement);
 		}else{
 			instruction = new Instruction();
 			instruction.setInstruction(getStatement("不知道怎么说"));
@@ -233,7 +235,8 @@ public class StatementAnalyzer {
 		String left = "左";
 		String right = "右";	
 		
-		if(statement.contains(article_a+forward)
+		if(statement.contains("过来")
+				||statement.contains(article_a+forward)
 				||statement.contains(article_a+forward)
 				||statement.contains(article_a+backward)
 				||statement.contains(article_a+left)
@@ -244,6 +247,10 @@ public class StatementAnalyzer {
 				||statement.contains(article_b+right)
 				||statement.contains("停")
 				||statement.contains("停下")
+				||statement.contains("好")
+				||statement.contains("好了")
+				||statement.contains("行")
+				||statement.contains("行了")
 				){
 			result = true;
 		}
@@ -252,7 +259,8 @@ public class StatementAnalyzer {
 	
 	private Instruction judgeDirection(String statement){
 		String direction = "";
-		if(statement.contains("前")){
+		if(statement.contains("前")
+				||statement.contains("过来")){
 			direction = "forward";
 		}else if(statement.contains("后")){
 			direction = "backward";
@@ -260,13 +268,86 @@ public class StatementAnalyzer {
 			direction = "left";
 		}else if(statement.contains("右")){
 			direction = "right";
-		}else if(statement.contains("停")){
+		}else if(statement.contains("停")
+				||statement.contains("好")
+				||statement.contains("行")){
 			direction = "stop";
 		}
 		
 		Instruction instruction = new Instruction();
 		instruction.setType(Instruction.INSTRUCTION_TYPE_MOTION);
 		instruction.setInstruction(direction);
+		return instruction;
+	}
+	
+	private boolean isEnglish(String statement){
+		boolean result = false;
+		
+		if(statement.contains("用英语怎么说")
+				||statement.contains("怎么说")
+				){
+			result = true;
+		}
+		return result;
+	}
+	
+	private Instruction translate(String statement){
+		String english = "";
+		statement = statement.replace("用英语怎么说", "");
+		statement = statement.replace("怎么说", "");
+		if(statement.contains("爸爸")){
+			english = "dad";
+		}else if(statement.contains("妈妈")){
+			english = "mom";
+		}else if(statement.contains("爷爷")){
+			english = "grandpa";
+		}else if(statement.contains("奶奶")){
+			english = "grandma";
+		}else if(statement.contains("姥姥")){
+			english = "grandma";
+		}else if(statement.contains("姥爷")){
+			english = "grandpa";
+		}else if(statement.contains("桌子")){
+			english = "table";
+		}else if(statement.contains("凳子")){
+			english = "stool";
+		}else if(statement.contains("电视")){
+			english = "television";
+		}else if(statement.contains("电脑")){
+			english = "computer";
+		}else if(statement.contains("手机")){
+			english = "phone";
+		}else if(statement.contains("微波炉")){
+			english = "microwave";
+		}else if(statement.contains("冰箱")){
+			english = "fridge";
+		}else if(statement.contains("洗衣机")){
+			english = "washer";
+		}else if(statement.contains("电风扇")){
+			english = "fan";
+		}else if(statement.contains("兔子")){
+			english = "rabbit";
+		}else if(statement.contains("小狗")){
+			english = "puppy";
+		}else if(statement.contains("小猫")){
+			english = "kitten";
+		}else if(statement.contains("大象")){
+			english = "elephant";
+		}else if(statement.contains("熊猫")){
+			english = "panda";
+		}else {
+			english = "这个，我也不知道。我们一起查查词典吧！";
+		}
+		List<String> middle = new ArrayList<String>();
+		middle.add("");
+		middle.add("是");
+		middle.add(statement + "是");
+		middle.add(statement + "用英语说是");
+//		middle.add("听好了，" + statement + "是");
+//		middle.add("听好了，" + statement + "用英语说是");
+		
+		Instruction instruction = new Instruction();
+		instruction.setInstruction(middle.get(random.nextInt(middle.size())) + " " + english);
 		return instruction;
 	}
 	

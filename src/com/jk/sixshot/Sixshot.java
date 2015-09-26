@@ -69,7 +69,7 @@ public class Sixshot extends Activity {
 	}
 	
 	private void initMotionSystem(){
-		motion = new Motion();
+		motion = new Motion(this);
 //		motion.forward();
 //		motion.backward();
 //		motion.left();
@@ -80,6 +80,7 @@ public class Sixshot extends Activity {
 	
 	private void move(String direction){
 		motion.move(direction);
+//		setListenerIdle(true);
 	}
 		
 	private void initView(){
@@ -246,15 +247,17 @@ public class Sixshot extends Activity {
 // 算数
 // 唱歌
 // 教英语
+// 学习
+// 创作，互联网...
 	
 //	android update project -p . --target android-19 -s
 //	ndk-build
 	
 	/**
 	 * 1. 词典
-	 * 2. 整合本地识别
-	 * 3. 喇叭
-	 * 4. 组装、运动控制
+	 * 2. 整合本地识别 ok
+	 * 3. 喇叭 ok
+	 * 4. 组装、运动控制 ok 
 	 * 5. 声纹识别
 	 * 6. 人脸识别
 	 * 7. 避障

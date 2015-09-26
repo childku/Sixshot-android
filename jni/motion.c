@@ -53,8 +53,8 @@ void Java_com_jk_sixshot_motion_Motion_init( JNIEnv* env, jobject thiz )
 	LOGD("init result is : %s", result);
 }
 //黄红蓝绿
-//gpio96  黄  SPI0_MISO
 //gpio93  红  SPI0_CLK
+//gpio96  黄  SPI0_MISO
 //gpio95  蓝  SPI0_MOSI
 //gpio94  绿  SPI0_CS
 
@@ -82,8 +82,8 @@ void Java_com_jk_sixshot_motion_Motion_stop( JNIEnv* env, jobject thiz ){
 void go(int a, int b, int c, int d){
 	char command[200];
 	sprintf(command, "su -c '(\
-			echo %d > /sys/class/gpio/gpio96/value;\
 			echo %d > /sys/class/gpio/gpio93/value;\
+			echo %d > /sys/class/gpio/gpio96/value;\
 			echo %d > /sys/class/gpio/gpio95/value;\
 			echo %d > /sys/class/gpio/gpio94/value\
 			)'", a, b, c, d);

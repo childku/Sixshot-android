@@ -164,7 +164,7 @@ public class XListener {
     private RecognizerListener recognizerListener = new RecognizerListener() {
         
         public void onVolumeChanged(int volume) {
-        	System.out.println("当前正在说话，音量大小：" + volume);
+//        	System.out.println("当前正在说话，音量大小：" + volume);
         }
         
 		@Override

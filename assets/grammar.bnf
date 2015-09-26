@@ -3,6 +3,7 @@
 
 !slot <person>;//人称、称谓
 !slot <chat>;
+!slot <command>;
 
 !slot <poems>;
 !slot <poemcmd>;
@@ -11,8 +12,12 @@
 !slot <caculatecmd>;
 !slot <caculateresult>;
 
+!slot <englishst>;// 英语
+!slot <englishcmd>;
+
 !slot <motionparticle>;// 运动
-!slot <motiondirection>;
+!slot <motiond>;
+!slot <motioncome>;
 !slot <motionverb>;
 !slot <motionstop>;
 
@@ -23,7 +28,9 @@
 [<person>]<chat> //聊天
 |[<poemcmd>]<poems> //诗歌、儿歌
 |<numbers><caculatecmd><numbers><caculateresult>
-|<motionparticle><motiondirection>[<motiondirection>]
+|<englishst><englishcmd>
+|<motionparticle><motiond>[<motionverb>]
+|<motioncome>
 |<motionstop>
 ;
 
@@ -33,8 +40,12 @@
 <poems>:登鹳雀楼|黄鹤楼|锄禾|小老鼠|一只小老鼠|鹅鹅鹅|咏鹅;
 
 // chat
-<person>:你;
+<person>:你|豆豆;
 <chat>:几岁|多大|叫什么|叫什么名字|属啥|属什么|真笨|真棒;
+
+// english
+<englishst>:爸爸|妈妈|爷爷|奶奶|姥姥|姥爷|桌子|凳子|电视|电脑|手机|微波炉|冰箱|洗衣机|电风扇|兔子|小狗|小猫|大象|熊猫;
+<englishcmd>:怎么说|用英语怎么说;
 
 // caculate
 <caculatecmd>:加|加上|减|减去|乘|乘以|除|除以;
@@ -43,6 +54,7 @@
 
 //motion
 <motionparticle>:往|向;
-<motiondirection>:前|后|左|右;
+<motiond>:前|后|左|右;
+<motioncome>:过来;
 <motionverb>:走;
-<motionstop>:停|停下|停下来;
+<motionstop>:停|停下|停下来|好|好了|行|行了;

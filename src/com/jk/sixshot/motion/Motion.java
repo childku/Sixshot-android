@@ -1,8 +1,12 @@
 package com.jk.sixshot.motion;
 
+import com.jk.sixshot.Sixshot;
+
 public class Motion
 {
-	public Motion(){
+	private Sixshot brain;
+	public Motion(Sixshot brain){
+		this.brain = brain;
 		initMotion();
 	}
     private void initMotion() {
@@ -24,13 +28,26 @@ public class Motion
     		backward();
     	}else if("left".equals(direction)){
     		left();
+    		try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+    		forward();
     	}else if("right".equals(direction)){
     		right();
+    		try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+    		forward();
     	}else if("stop".equals(direction)){
     		stop();
     	}else{
     		throw new IllegalArgumentException("不支持此种运动方式【" + direction+ "】");
     	}
+    	brain.setListenerIdle(true);
     }
 
     static {
