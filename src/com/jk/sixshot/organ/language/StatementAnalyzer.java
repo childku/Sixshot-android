@@ -372,6 +372,11 @@ public class StatementAnalyzer {
 		}
 		return poem;
 	}
-	
+	/**
+	 * 1. 通配符
+	 * 2. 语境检测
+	 * 3. 属性，动态属性
+	 * 4. 上下文
+	 */
 	
 }
