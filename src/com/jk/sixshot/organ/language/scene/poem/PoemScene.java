@@ -1,6 +1,7 @@
 package com.jk.sixshot.organ.language.scene.poem;
 
 import com.jk.sixshot.organ.language.scene.AbstractDialog;
+import com.jk.sixshot.organ.language.scene.Rule;
 import com.jk.sixshot.organ.language.scene.Scene;
 
 public abstract class PoemScene extends AbstractDialog{
@@ -19,4 +20,9 @@ public abstract class PoemScene extends AbstractDialog{
 	 */
 	@Override
 	protected abstract void setAsks();
+	
+	@Override
+	public Rule generateRule() {
+		return null;
+	}
 }

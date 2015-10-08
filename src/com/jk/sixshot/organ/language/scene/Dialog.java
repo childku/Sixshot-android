@@ -30,4 +30,11 @@ public interface Dialog {
 	public List<String> getAsks();
 	
 	public List<String> getAnswers();
+	
+	/**
+	 * 生成规则
+	 * 
+	 * @return
+	 */
+	public Rule generateRule();
 }

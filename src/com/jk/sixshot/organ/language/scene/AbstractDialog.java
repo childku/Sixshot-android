@@ -8,6 +8,7 @@ public abstract class AbstractDialog implements Dialog{
 
 	protected List<String> asks = new ArrayList<String>();
 	protected List<String> answers = new ArrayList<String>();
+	protected Rule rule = new Rule();
 	
 	
 	@Override
@@ -22,5 +23,6 @@ public abstract class AbstractDialog implements Dialog{
 	protected abstract void setAsks();
 	
 	protected abstract void setAnswers();
+	
 	
 }
