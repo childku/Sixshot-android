@@ -1,13 +1,10 @@
 package com.jk.sixshot.organ.language.scene.chat;
 
-import com.jk.sixshot.organ.language.scene.Scene;
-
-
 public class Chat000003 extends ChatScene{
 
 	@Override
 	public void setAsks() {
-		asks.add("{你[" + Scene.SCENE_CHAT + "]}#叫什么");
+		addValue(SLOT_NAME_CHAT, "叫什么");
 	}
 
 	@Override

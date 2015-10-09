@@ -6,13 +6,21 @@ import com.jk.sixshot.organ.language.scene.Scene;
 
 public abstract class PoemScene extends AbstractDialog{
 
+	protected String SLOT_NAME_POEM_CMD = "poem_cmd";
+	
+	protected String SLOT_NAME_POEM = "poem";
+	
+	public PoemScene(){
+		addValue(SLOT_NAME_POEM_CMD, "背");
+		addValue(SLOT_NAME_POEM_CMD, "背首");
+		addValue(SLOT_NAME_POEM_CMD, "背一首");
+		addValue(SLOT_NAME_POEM_CMD, "背个");
+		addValue(SLOT_NAME_POEM_CMD, "背一个");
+	}
+	
 	@Override
 	public String getSceneName() {
 		return Scene.SCENE_POEM;
-	}
-	
-	protected String getRule(){
-		return "背首|背个|背|背一个";
 	}
 	
 	/**

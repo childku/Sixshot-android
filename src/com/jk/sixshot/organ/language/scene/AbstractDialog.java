@@ -1,7 +1,9 @@
 package com.jk.sixshot.organ.language.scene;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public abstract class AbstractDialog implements Dialog{
@@ -10,6 +12,7 @@ public abstract class AbstractDialog implements Dialog{
 	protected List<String> answers = new ArrayList<String>();
 	protected Rule rule = new Rule();
 	
+	private Map<String, Slot> slots = new HashMap<String, Slot>();
 	
 	@Override
 	public List<String> getAsks() {
@@ -23,6 +26,10 @@ public abstract class AbstractDialog implements Dialog{
 	protected abstract void setAsks();
 	
 	protected abstract void setAnswers();
+	
+	protected void addValue(String slotName, String value){
+		slots.get(slotName).addValue(value);
+	}
 	
 	
 }

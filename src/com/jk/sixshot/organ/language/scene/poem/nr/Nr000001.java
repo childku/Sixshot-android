@@ -7,7 +7,7 @@ public class Nr000001 extends PoemScene{
 
 	@Override
 	public void setAsks() {
-		asks.add(getRule() + "#小老鼠");
+		addValue(SLOT_NAME_POEM, "小老鼠");
 	}
 
 	@Override

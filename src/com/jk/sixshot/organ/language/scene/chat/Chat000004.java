@@ -1,8 +1,5 @@
 package com.jk.sixshot.organ.language.scene.chat;
 
-import com.jk.sixshot.organ.language.scene.Scene;
-
-
 public class Chat000004 extends ChatScene{
 
 	/**
@@ -10,8 +7,8 @@ public class Chat000004 extends ChatScene{
 	 */
 	@Override
 	public void setAsks() {
-		asks.add("{你[" + Scene.SCENE_CHAT + "]}#几岁|多大");
-//		asks.add("{你[" + Scene.SCENE_CHAT + "]}多大");
+		addValue(SLOT_NAME_CHAT, "几岁");
+		addValue(SLOT_NAME_CHAT, "多大");
 	}
 
 	@Override

@@ -5,7 +5,7 @@ public class Chat000002 extends ChatScene{
 
 	@Override
 	public void setAsks() {
-		asks.add("#你好");
+		addValue(SLOT_NAME_CHAT, "你好");
 	}
 
 	@Override

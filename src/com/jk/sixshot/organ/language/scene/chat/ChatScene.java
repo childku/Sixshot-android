@@ -10,6 +10,16 @@ import com.jk.sixshot.organ.language.scene.Slot;
 
 public abstract class ChatScene extends AbstractDialog{
 
+	protected String SLOT_NAME_PERSON = "person";
+	
+	protected String SLOT_NAME_CHAT = "chat";
+	
+	
+	public ChatScene(){
+		addValue(SLOT_NAME_PERSON, "{你[" + Scene.SCENE_CHAT + "]}");
+		addValue(SLOT_NAME_PERSON, "豆豆");
+	}
+	
 	@Override
 	public String getSceneName() {
 		return Scene.SCENE_CHAT;
