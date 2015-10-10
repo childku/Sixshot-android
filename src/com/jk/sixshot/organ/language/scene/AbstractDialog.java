@@ -27,9 +27,15 @@ public abstract class AbstractDialog implements Dialog{
 	
 	protected abstract void setAnswers();
 	
+	protected void addSlot(String slotName){
+		Slot slot = new Slot();
+		slot.setName(slotName);
+		
+		slots.put(slotName, slot);
+	}
+	
 	protected void addValue(String slotName, String value){
 		slots.get(slotName).addValue(value);
 	}
-	
 	
 }

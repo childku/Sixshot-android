@@ -9,7 +9,7 @@ public class Chat000001 extends ChatScene{
 	
 	@Override
 	public void setAsks() {
-		addValue(SLOT_NAME_CHAT, "豆豆");
+		addValue("豆豆");
 	}
 
 	@Override

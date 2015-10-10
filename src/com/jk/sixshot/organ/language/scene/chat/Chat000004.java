@@ -7,8 +7,8 @@ public class Chat000004 extends ChatScene{
 	 */
 	@Override
 	public void setAsks() {
-		addValue(SLOT_NAME_CHAT, "几岁");
-		addValue(SLOT_NAME_CHAT, "多大");
+		addValue("几岁");
+		addValue("多大");
 	}
 
 	@Override
