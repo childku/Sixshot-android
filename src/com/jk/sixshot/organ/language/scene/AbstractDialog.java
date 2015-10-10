@@ -18,8 +18,9 @@ public abstract class AbstractDialog implements Dialog{
 	public List<String> getAsks() {
 		return asks;
 	}
+	
 	@Override
-	public List<String> getAnswers() {
+	public List<String> getAnswers(String statement) {
 		return answers;
 	}
 
@@ -36,6 +37,10 @@ public abstract class AbstractDialog implements Dialog{
 	
 	protected void addValue(String slotName, String value){
 		slots.get(slotName).addValue(value);
+	}
+	
+	protected Slot getSlot(String slotName){
+		return slots.get(slotName);
 	}
 	
 }

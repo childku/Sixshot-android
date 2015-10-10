@@ -31,6 +31,8 @@ public abstract class PoemScene extends AbstractDialog{
 	
 	@Override
 	public Rule generateRule() {
-		return null;
+		Rule rule = new Rule();
+		rule.setRule("<" + SLOT_NAME_POEM_CMD  + "><" + SLOT_NAME_POEM + ">");
+		return rule;
 	}
 }

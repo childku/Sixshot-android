@@ -29,7 +29,7 @@ public interface Dialog {
 	 */
 	public List<String> getAsks();
 	
-	public List<String> getAnswers();
+	public List<String> getAnswers(String statement);
 	
 	/**
 	 * 生成规则
