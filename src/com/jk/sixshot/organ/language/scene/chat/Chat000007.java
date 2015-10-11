@@ -10,10 +10,10 @@ public class Chat000007 extends ChatScene{
 
 	@Override
 	public void setAnswers() {
-		answers.add("你也很棒！");
-		answers.add("别夸奖我，我会不好意思的");
-		answers.add("还差的远呢！");
-		answers.add("还有努力的空间，我还要努力！");
+		addResponse("你也很棒！");
+		addResponse("别夸奖我，我会不好意思的");
+		addResponse("还差的远呢！");
+		addResponse("还有努力的空间，我还要努力！");
 	}
 
 }

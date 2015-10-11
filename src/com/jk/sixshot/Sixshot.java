@@ -180,15 +180,15 @@ public class Sixshot extends Activity {
 		speaker.speak(statement);
 	}
 	public void analyze(String statement){
-		List<Instruction> instructions = analyzer.analyze(statement);
+		List<Response> instructions = analyzer.analyze(statement);
 		execute(instructions);
 	}
 	
-	private void execute(List<Instruction> instructions){
-		for(Instruction instruction:instructions){
-			if(instruction.getType().equals(Instruction.INSTRUCTION_TYPE_SPEAK)){
+	private void execute(List<Response> instructions){
+		for(Response instruction:instructions){
+			if(instruction.getType().equals(Response.RESPONSE_TYPE_SPEAK)){
 				speak(instruction.getInstruction());
-			}else if(instruction.getType().equals(Instruction.INSTRUCTION_TYPE_MOTION)){
+			}else if(instruction.getType().equals(Response.RESPONSE_TYPE_MOTION)){
 				move(instruction.getInstruction());
 			}
 		}

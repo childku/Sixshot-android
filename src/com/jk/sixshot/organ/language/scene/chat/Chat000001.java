@@ -14,11 +14,11 @@ public class Chat000001 extends ChatScene{
 
 	@Override
 	public void setAnswers() {
-		answers.add("你好！");
-		answers.add("诶，在！");
-		answers.add("在呢！");
-		answers.add("啥事？");
-		answers.add("嗨，你好！");
+		addResponse("你好！");
+		addResponse("诶，在！");
+		addResponse("在呢！");
+		addResponse("啥事？");
+		addResponse("嗨，你好！");
 	}
 
 }

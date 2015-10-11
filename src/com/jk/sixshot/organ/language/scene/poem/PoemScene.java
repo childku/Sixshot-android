@@ -29,6 +29,10 @@ public abstract class PoemScene extends AbstractDialog{
 	@Override
 	protected abstract void setAsks();
 	
+	protected void addValue(String value){
+		addValue(SLOT_NAME_POEM, value);
+	}
+	
 	@Override
 	public Rule generateRule() {
 		Rule rule = new Rule();

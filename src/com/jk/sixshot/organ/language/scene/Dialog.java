@@ -2,6 +2,8 @@ package com.jk.sixshot.organ.language.scene;
 
 import java.util.List;
 
+import com.jk.sixshot.Response;
+
 /**
  * 对话
  * @author child
@@ -29,7 +31,7 @@ public interface Dialog {
 	 */
 	public List<String> getAsks();
 	
-	public List<String> getAnswers(String statement);
+	public List<Response> getResponses(String statement);
 	
 	/**
 	 * 生成规则

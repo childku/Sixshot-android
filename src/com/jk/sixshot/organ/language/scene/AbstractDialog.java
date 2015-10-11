@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jk.sixshot.Response;
+
 
 public abstract class AbstractDialog implements Dialog{
 
 	protected List<String> asks = new ArrayList<String>();
-	protected List<String> answers = new ArrayList<String>();
+	protected List<Response> answers = new ArrayList<Response>();
 	protected Rule rule = new Rule();
 	
 	private Map<String, Slot> slots = new HashMap<String, Slot>();
@@ -20,7 +22,7 @@ public abstract class AbstractDialog implements Dialog{
 	}
 	
 	@Override
-	public List<String> getAnswers(String statement) {
+	public List<Response> getResponses(String statement) {
 		return answers;
 	}
 
@@ -41,6 +43,16 @@ public abstract class AbstractDialog implements Dialog{
 	
 	protected Slot getSlot(String slotName){
 		return slots.get(slotName);
+	}
+	
+	protected void addResponse(Response response){
+		answers.add(response);
+	}
+	
+	protected void addResponse(String instruction){
+		Response response = new Response();
+		response.setInstruction(instruction);
+		addResponse(response);
 	}
 	
 }

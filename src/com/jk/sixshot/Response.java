@@ -1,13 +1,19 @@
 package com.jk.sixshot;
 
-public class Instruction {
+/**
+ * 响应
+ * @author child
+ *
+ */
+public class Response {
 	
-	public static final String INSTRUCTION_TYPE_SPEAK = "speak";
+	public static final String RESPONSE_TYPE_SPEAK = "speak";
 	
-	public static final String INSTRUCTION_TYPE_MOTION = "motion";
+	public static final String RESPONSE_TYPE_MOTION = "motion";
 	
-	private String type = INSTRUCTION_TYPE_SPEAK;
+	private String type = RESPONSE_TYPE_SPEAK;
 	
+	//响应的指令或内容
 	private String instruction = "";
 
 	public String getType() {

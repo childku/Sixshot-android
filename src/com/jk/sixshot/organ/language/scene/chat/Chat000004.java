@@ -13,10 +13,10 @@ public class Chat000004 extends ChatScene{
 
 	@Override
 	public void setAnswers() {
-		answers.add("我三岁了");
-		answers.add("我三岁了，你呢？");
-		answers.add("今年我三岁");
-		answers.add("我已经三岁了，是个大孩子了！");
+		addResponse("我三岁了");
+		addResponse("我三岁了，你呢？");
+		addResponse("今年我三岁");
+		addResponse("我已经三岁了，是个大孩子了！");
 	}
 
 }

@@ -10,10 +10,10 @@ public class Chat000005 extends ChatScene{
 
 	@Override
 	public void setAnswers() {
-		answers.add("我属兔");
-		answers.add("我属兔的，小白兔的兔？");
-		answers.add("我属小白兔的");
-		answers.add("我属兔子的，你呢？");
+		addResponse("我属兔");
+		addResponse("我属兔的，小白兔的兔？");
+		addResponse("我属小白兔的");
+		addResponse("我属兔子的，你呢？");
 	}
 
 }

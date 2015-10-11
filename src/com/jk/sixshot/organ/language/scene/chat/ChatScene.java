@@ -10,7 +10,6 @@ public abstract class ChatScene extends AbstractDialog{
 	
 	protected String SLOT_NAME_CHAT = "chat";
 	
-	
 	public ChatScene(){
 		addSlot(SLOT_NAME_PERSON);
 		addSlot(SLOT_NAME_CHAT);
@@ -33,7 +32,7 @@ public abstract class ChatScene extends AbstractDialog{
 	protected void addValue(String value){
 		addValue(SLOT_NAME_CHAT, value);
 	}
-	
+
 	@Override
 	public Rule generateRule() {
 		Rule rule = new Rule();

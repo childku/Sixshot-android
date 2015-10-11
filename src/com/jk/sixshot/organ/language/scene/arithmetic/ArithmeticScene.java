@@ -2,6 +2,7 @@ package com.jk.sixshot.organ.language.scene.arithmetic;
 
 import java.util.List;
 
+import com.jk.sixshot.Response;
 import com.jk.sixshot.organ.language.scene.AbstractDialog;
 import com.jk.sixshot.organ.language.scene.Rule;
 import com.jk.sixshot.organ.language.scene.Scene;
@@ -148,7 +149,7 @@ public class ArithmeticScene extends AbstractDialog{
 		
 	}
 	
-	public List<String> getAnswers(String statement){
+	public List<Response> getResponses(String statement){
 		//TODO 运算逻辑
 		return null;
 	}

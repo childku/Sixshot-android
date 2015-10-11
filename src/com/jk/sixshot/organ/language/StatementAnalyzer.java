@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import com.jk.sixshot.Instruction;
+import com.jk.sixshot.Response;
 
 public class StatementAnalyzer {
 	private Map<String, List<String>> answers = new HashMap<String, List<String>>();
@@ -109,34 +109,34 @@ public class StatementAnalyzer {
 		poems.put("一只小老鼠", poem);
 	}
 	
-	public List<Instruction> analyze(String statement){
-		List<Instruction> instructions = new ArrayList<Instruction>();
-		Instruction instruction = null;
+	public List<Response> analyze(String statement){
+		List<Response> responses = new ArrayList<Response>();
+		Response response = null;
 		if(statement.contains("豆豆")){
-			instruction = new Instruction();
-			instruction.setInstruction(getStatement("豆豆"));
+			response = new Response();
+			response.setInstruction(getStatement("豆豆"));
 		}else if(statement.contains("你好")){
-			instruction = new Instruction();
-			instruction.setInstruction(getStatement("问好"));
+			response = new Response();
+			response.setInstruction(getStatement("问好"));
 		}else if(statement.contains("名字")){
-			instruction = new Instruction();
-			instruction.setInstruction(getStatement("名字"));
+			response = new Response();
+			response.setInstruction(getStatement("名字"));
 		}else if(statement.contains("几岁")||
 				statement.contains("多大")){
-			instruction = new Instruction();
-			instruction.setInstruction(getStatement("几岁"));
+			response = new Response();
+			response.setInstruction(getStatement("几岁"));
 		}else if(statement.contains("属啥")||
 				statement.contains("属什么")){
-			instruction = new Instruction();
-			instruction.setInstruction(getStatement("属啥"));
+			response = new Response();
+			response.setInstruction(getStatement("属啥"));
 		}else if(statement.contains("你真棒")||
 				statement.contains("豆豆真棒")){
-			instruction = new Instruction();
-			instruction.setInstruction(getStatement("真棒"));
+			response = new Response();
+			response.setInstruction(getStatement("真棒"));
 		}else if(statement.contains("你真笨")||
 				statement.contains("你真笨")){
-			instruction = new Instruction();
-			instruction.setInstruction(getStatement("你真笨"));
+			response = new Response();
+			response.setInstruction(getStatement("你真笨"));
 		}else if(statement.contains("北首")||
 				statement.contains("被首")||
 				statement.contains("背首")||
@@ -174,21 +174,21 @@ public class StatementAnalyzer {
 			poemName = poemName.replace("。", "");
 			poemName = poemName.replace("，", "");
 			
-			instruction = new Instruction();
-			instruction.setInstruction(getPoem(poemName));
+			response = new Response();
+			response.setInstruction(getPoem(poemName));
 		}else if(isCaculate(statement)){
-			instruction = caculate(statement);
+			response = caculate(statement);
 		}else if(isMotion(statement)){
-			instruction = judgeDirection(statement);
+			response = judgeDirection(statement);
 		}else if(isEnglish(statement)){
-			instruction = translate(statement);
+			response = translate(statement);
 		}else{
-			instruction = new Instruction();
-			instruction.setInstruction(getStatement("不知道怎么说"));
+			response = new Response();
+			response.setInstruction(getStatement("不知道怎么说"));
 		}
 		
-		instructions.add(instruction);
-		return instructions;
+		responses.add(response);
+		return responses;
 	}
 	
 	private boolean isCaculate(String statement){
@@ -200,7 +200,7 @@ public class StatementAnalyzer {
 		return result;
 	}
 
-	private Instruction caculate(String statement){
+	private Response caculate(String statement){
 		String result = "等于";
 		String type = "加";
 		if(statement.contains("等于")){
@@ -218,7 +218,7 @@ public class StatementAnalyzer {
 		int first = Integer.parseInt(statement.substring(0, statement.indexOf(type)));
 		int second = Integer.parseInt(statement.substring(statement.indexOf(type)+1, statement.indexOf(result)));
 		
-		Instruction instruction = new Instruction();
+		Response instruction = new Response();
 		int r = first + second;
 		System.out.println("---caculate result: " + r);
 		instruction.setInstruction(result + r);
@@ -257,7 +257,7 @@ public class StatementAnalyzer {
 		return result;
 	}
 	
-	private Instruction judgeDirection(String statement){
+	private Response judgeDirection(String statement){
 		String direction = "";
 		if(statement.contains("前")
 				||statement.contains("过来")){
@@ -274,8 +274,8 @@ public class StatementAnalyzer {
 			direction = "stop";
 		}
 		
-		Instruction instruction = new Instruction();
-		instruction.setType(Instruction.INSTRUCTION_TYPE_MOTION);
+		Response instruction = new Response();
+		instruction.setType(Response.RESPONSE_TYPE_MOTION);
 		instruction.setInstruction(direction);
 		return instruction;
 	}
@@ -291,7 +291,7 @@ public class StatementAnalyzer {
 		return result;
 	}
 	
-	private Instruction translate(String statement){
+	private Response translate(String statement){
 		String english = "";
 		statement = statement.replace("用英语怎么说", "");
 		statement = statement.replace("怎么说", "");
@@ -346,7 +346,7 @@ public class StatementAnalyzer {
 //		middle.add("听好了，" + statement + "是");
 //		middle.add("听好了，" + statement + "用英语说是");
 		
-		Instruction instruction = new Instruction();
+		Response instruction = new Response();
 		instruction.setInstruction(middle.get(random.nextInt(middle.size())) + " " + english);
 		return instruction;
 	}
