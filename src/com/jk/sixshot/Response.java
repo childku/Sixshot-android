@@ -7,11 +7,14 @@ package com.jk.sixshot;
  */
 public class Response {
 	
-	public static final String RESPONSE_TYPE_SPEAK = "speak";
+	public static final String RESPONSE_TYPE_LANGUAGE = "language";
 	
 	public static final String RESPONSE_TYPE_MOTION = "motion";
 	
-	private String type = RESPONSE_TYPE_SPEAK;
+	public static final String RESPONSE_TYPE_IMAGE = "image";
+	
+	
+	private String type = RESPONSE_TYPE_LANGUAGE;
 	
 	//响应的指令或内容
 	private String instruction = "";

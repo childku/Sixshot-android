@@ -186,7 +186,7 @@ public class Sixshot extends Activity {
 	
 	private void execute(List<Response> instructions){
 		for(Response instruction:instructions){
-			if(instruction.getType().equals(Response.RESPONSE_TYPE_SPEAK)){
+			if(instruction.getType().equals(Response.RESPONSE_TYPE_LANGUAGE)){
 				speak(instruction.getInstruction());
 			}else if(instruction.getType().equals(Response.RESPONSE_TYPE_MOTION)){
 				move(instruction.getInstruction());

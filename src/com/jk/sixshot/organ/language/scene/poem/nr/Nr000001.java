@@ -6,12 +6,12 @@ import com.jk.sixshot.organ.language.scene.poem.PoemScene;
 public class Nr000001 extends PoemScene{
 
 	@Override
-	public void setAsks() {
+	public void addAsks() {
 		addValue("小老鼠");
 	}
 
 	@Override
-	public void setAnswers() {
+	public void addResponse() {
 		addResponse("小老鼠上登台，偷油吃下不来。喵喵喵，猫来了，叽里咕噜滚下来！");
 	}
 

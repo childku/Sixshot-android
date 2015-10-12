@@ -4,12 +4,12 @@ package com.jk.sixshot.organ.language.scene.chat;
 public class Chat000002 extends ChatScene{
 
 	@Override
-	public void setAsks() {
+	public void addAsks() {
 		addValue("你好");
 	}
 
 	@Override
-	public void setAnswers() {
+	public void addResponse() {
 		addResponse("你好！");
 		addResponse("你好呀！");
 		addResponse("你好，我是豆豆！");

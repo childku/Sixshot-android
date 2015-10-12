@@ -8,12 +8,12 @@ public class Chat000001 extends ChatScene{
 	 */
 	
 	@Override
-	public void setAsks() {
+	public void addAsks() {
 		addValue("豆豆");
 	}
 
 	@Override
-	public void setAnswers() {
+	public void addResponse() {
 		addResponse("你好！");
 		addResponse("诶，在！");
 		addResponse("在呢！");

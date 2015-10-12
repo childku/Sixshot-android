@@ -2,6 +2,7 @@ package com.jk.sixshot.organ.language.scene.motion;
 
 import com.jk.sixshot.organ.language.scene.AbstractDialog;
 import com.jk.sixshot.organ.language.scene.Rule;
+import com.jk.sixshot.organ.language.scene.RuleSlot;
 import com.jk.sixshot.organ.language.scene.Scene;
 
 public abstract class MotionScene extends AbstractDialog{
@@ -45,20 +46,39 @@ public abstract class MotionScene extends AbstractDialog{
 		return Scene.SCENE_CHAT;
 	}
 
-	/**
-	 * 人称#内容
-	 */
 	@Override
-	protected abstract void setAsks();
+	protected abstract void addAsks();
 	
-//	protected void addValue(String value){
-//		addValue(SLOT_NAME_CHAT, value);
-//	}
 	
 	@Override
-	public Rule generateRule() {
+	public void addRecogntionRule() {
 		Rule rule = new Rule();
-		rule.setRule("<" + SLOT_NAME_MOTION_PARTICLE  + "><" + SLOT_NAME_MOTION_DIRECTION + ">[<" + SLOT_NAME_MOTION_CMD  + ">]|<" + SLOT_NAME_MOTION_SIGNLE_CMD + ">");
-		return rule;
+		rule.setRule("<" + SLOT_NAME_MOTION_PARTICLE  + "><" + SLOT_NAME_MOTION_DIRECTION + ">[<" + SLOT_NAME_MOTION_CMD  + ">]");
+		recognitionRules.add(rule);
+		
+		rule = new Rule();
+		rule.setRule("<" + SLOT_NAME_MOTION_SIGNLE_CMD + ">");
+		
+		RuleSlot particleSlot = new RuleSlot(getSlot(SLOT_NAME_MOTION_PARTICLE)); 
+		RuleSlot directionSlot = new RuleSlot(getSlot(SLOT_NAME_MOTION_DIRECTION)); 
+		RuleSlot cmdSlot = new RuleSlot(true, getSlot(SLOT_NAME_MOTION_CMD)); 
+		
+		rule.addSlot(particleSlot);
+		rule.addSlot(directionSlot);
+		rule.addSlot(cmdSlot);
+		
+		recognitionRules.add(rule);
+		
+		//单独命令规则，TODO 需要确认语境
+		rule = new Rule();
+		
+		RuleSlot signelSlot = new RuleSlot(getSlot(SLOT_NAME_MOTION_SIGNLE_CMD)); 
+		
+		rule.addSlot(signelSlot);
+		
+		recognitionRules.add(rule);
+	}
+	
+	public void addResponseRule(){
 	}
 }

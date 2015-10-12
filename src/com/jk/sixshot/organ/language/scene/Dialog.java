@@ -34,9 +34,15 @@ public interface Dialog {
 	public List<Response> getResponses(String statement);
 	
 	/**
-	 * 生成规则
+	 * 获取识别规则
 	 * 
 	 * @return
 	 */
-	public Rule generateRule();
+	public List<Rule> getRecognitionRules();
+	
+	/**
+	 * 获取响应规则
+	 * @return
+	 */
+	public List<String> getResponseRules();
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.jk.sixshot.Response;
 import com.jk.sixshot.organ.language.scene.AbstractDialog;
 import com.jk.sixshot.organ.language.scene.Rule;
+import com.jk.sixshot.organ.language.scene.RuleSlot;
 import com.jk.sixshot.organ.language.scene.Scene;
 
 public class ArithmeticScene extends AbstractDialog{
@@ -29,7 +30,7 @@ public class ArithmeticScene extends AbstractDialog{
 	}
 
 	@Override
-	protected void setAsks() {
+	protected void addAsks() {
 		addValue(SLOT_NAME_CACULATE_CMD, "加");
 		addValue(SLOT_NAME_CACULATE_CMD, "加上");
 		addValue(SLOT_NAME_CACULATE_CMD, "减");
@@ -145,7 +146,7 @@ public class ArithmeticScene extends AbstractDialog{
 		addValue(SLOT_NAME_CACULATE_NUMBER, "100");
 	}
 	
-	protected void setAnswers() {
+	protected void addResponse() {
 		
 	}
 	
@@ -155,9 +156,24 @@ public class ArithmeticScene extends AbstractDialog{
 	}
 
 	@Override
-	public Rule generateRule() {
+	public void addRecogntionRule() {
 		Rule rule = new Rule();
-		rule.setRule("<" + SLOT_NAME_CACULATE_NUMBER  + "><" + SLOT_NAME_CACULATE_CMD + "><" + SLOT_NAME_CACULATE_NUMBER + "><" + SLOT_NAME_CACULATE_RESULT + ">");
-		return rule;
+		
+		RuleSlot n1Slot = new RuleSlot(getSlot(SLOT_NAME_CACULATE_NUMBER)); 
+		RuleSlot cmdSlot = new RuleSlot(getSlot(SLOT_NAME_CACULATE_CMD));
+		RuleSlot n2Slot = new RuleSlot( getSlot(SLOT_NAME_CACULATE_NUMBER)); 
+		RuleSlot resultSlot = new RuleSlot(getSlot(SLOT_NAME_CACULATE_RESULT));
+		
+		rule.addSlot(n1Slot);
+		rule.addSlot(cmdSlot);
+		rule.addSlot(n2Slot);
+		rule.addSlot(resultSlot);
+		
+		recognitionRules.add(rule);
+		
+		//TODO 3 加 3 呢？
+	}
+
+	public void addResponseRule(){
 	}
 }

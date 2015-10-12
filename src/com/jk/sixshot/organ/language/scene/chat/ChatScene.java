@@ -2,20 +2,27 @@ package com.jk.sixshot.organ.language.scene.chat;
 
 import com.jk.sixshot.organ.language.scene.AbstractDialog;
 import com.jk.sixshot.organ.language.scene.Rule;
+import com.jk.sixshot.organ.language.scene.RuleSlot;
 import com.jk.sixshot.organ.language.scene.Scene;
 
 public abstract class ChatScene extends AbstractDialog{
 
-	protected String SLOT_NAME_PERSON = "person";
+	/**
+	 * 称谓
+	 */
+	protected String SLOT_NAME_CHAT_PERSON = "c_person";
 	
-	protected String SLOT_NAME_CHAT = "chat";
+	/**
+	 * 内容
+	 */
+	protected String SLOT_NAME_CHAT_CONTENT = "c_content";
 	
 	public ChatScene(){
-		addSlot(SLOT_NAME_PERSON);
-		addSlot(SLOT_NAME_CHAT);
+		addSlot(SLOT_NAME_CHAT_PERSON);
+		addSlot(SLOT_NAME_CHAT_CONTENT);
 		
-		addValue(SLOT_NAME_PERSON, "{你[" + Scene.SCENE_CHAT + "]}");
-		addValue(SLOT_NAME_PERSON, "豆豆");
+		addValue(SLOT_NAME_CHAT_PERSON, "{你[" + Scene.SCENE_CHAT + "]}");
+		addValue(SLOT_NAME_CHAT_PERSON, "豆豆");
 	}
 	
 	@Override
@@ -23,20 +30,27 @@ public abstract class ChatScene extends AbstractDialog{
 		return Scene.SCENE_CHAT;
 	}
 
-	/**
-	 * 人称#内容
-	 */
 	@Override
-	protected abstract void setAsks();
+	protected abstract void addAsks();
 	
 	protected void addValue(String value){
-		addValue(SLOT_NAME_CHAT, value);
+		addValue(SLOT_NAME_CHAT_CONTENT, value);
 	}
 
 	@Override
-	public Rule generateRule() {
+	public void addRecogntionRule() {
 		Rule rule = new Rule();
-		rule.setRule("[<" + SLOT_NAME_PERSON  + ">]<" + SLOT_NAME_CHAT + ">");
-		return rule;
+		
+		RuleSlot personSlot = new RuleSlot(true, getSlot(SLOT_NAME_CHAT_PERSON)); 
+		RuleSlot contentSlot = new RuleSlot(getSlot(SLOT_NAME_CHAT_CONTENT)); 
+		
+		rule.addSlot(personSlot);
+		rule.addSlot(contentSlot);
+		
+		recognitionRules.add(rule);
+	}
+	
+	public void addResponseRule(){
+		responseRules.add("<" + SLOT_NAME_CHAT_PERSON +"><" + SLOT_NAME_CHAT_CONTENT + ">");
 	}
 }

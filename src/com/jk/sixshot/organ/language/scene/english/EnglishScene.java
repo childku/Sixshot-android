@@ -27,16 +27,21 @@ public abstract class EnglishScene extends AbstractDialog{
 	 * 人称#内容
 	 */
 	@Override
-	protected abstract void setAsks();
+	protected abstract void addAsks();
 	
 	protected void addValue(String value){
 		addValue(SLOT_NAME_ENGLISH_STATEMENT, value);
 	}
 	
 	@Override
-	public Rule generateRule() {
+	public void addRecogntionRule() {
 		Rule rule = new Rule();
 		rule.setRule("<" + SLOT_NAME_ENGLISH_STATEMENT  + "><" + SLOT_NAME_ENGLISH_CMD + ">");
-		return rule;
+		recognitionRules.add(rule);
 	}
+	
+	public void addResponseRule(){
+		
+	}
+		
 }

@@ -6,13 +6,13 @@ public class Chat000004 extends ChatScene{
 	 * 人称#内容
 	 */
 	@Override
-	public void setAsks() {
+	public void addAsks() {
 		addValue("几岁");
 		addValue("多大");
 	}
 
 	@Override
-	public void setAnswers() {
+	public void addResponse() {
 		addResponse("我三岁了");
 		addResponse("我三岁了，你呢？");
 		addResponse("今年我三岁");
