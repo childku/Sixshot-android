@@ -1,12 +1,14 @@
 package com.jk.sixshot.organ.language.scene.motion;
 
+import com.jk.sixshot.organ.language.scene.I;
 
 
-public class Motion000001 extends MotionScene{
+
+public class Motion000001 extends MotionDialog implements I{
 
 	@Override
 	public void addAsks() {
-		addValue(SLOT_NAME_MOTION_SIGNLE_CMD, "转一个");
+		addValue(MotionScene.SCENE_ARITHMETIC, "转一个");
 	}
 
 	@Override

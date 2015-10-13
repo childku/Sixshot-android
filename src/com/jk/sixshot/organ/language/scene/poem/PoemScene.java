@@ -1,15 +1,15 @@
 package com.jk.sixshot.organ.language.scene.poem;
 
-import com.jk.sixshot.organ.language.scene.AbstractDialog;
+import com.jk.sixshot.organ.language.scene.AbstractScene;
 import com.jk.sixshot.organ.language.scene.Rule;
 import com.jk.sixshot.organ.language.scene.RuleSlot;
 import com.jk.sixshot.organ.language.scene.Scene;
 
-public abstract class PoemScene extends AbstractDialog{
+public class PoemScene extends AbstractScene<PoemScene>{
 
-	protected String SLOT_NAME_POEM_CMD = "poem_cmd";
+	public String SLOT_NAME_POEM_CMD = "poem_cmd";
 	
-	protected String SLOT_NAME_POEM_NAME = "poem_name";
+	public String SLOT_NAME_POEM_NAME = "poem_name";
 	
 	public PoemScene(){
 		addValue(SLOT_NAME_POEM_CMD, "背");
@@ -23,9 +23,6 @@ public abstract class PoemScene extends AbstractDialog{
 	public String getSceneName() {
 		return Scene.SCENE_POEM;
 	}
-	
-	@Override
-	protected abstract void addAsks();
 	
 	protected void addValue(String value){
 		addValue(SLOT_NAME_POEM_NAME, value);

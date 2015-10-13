@@ -1,14 +1,14 @@
 package com.jk.sixshot.organ.language.scene.english;
 
-import com.jk.sixshot.organ.language.scene.AbstractDialog;
+import com.jk.sixshot.organ.language.scene.AbstractScene;
 import com.jk.sixshot.organ.language.scene.Rule;
 import com.jk.sixshot.organ.language.scene.Scene;
 
-public abstract class EnglishScene extends AbstractDialog{
+public class EnglishScene extends AbstractScene<EnglishScene>{
 
-	protected String SLOT_NAME_ENGLISH_CMD = "en_cmd";
+	public String SLOT_NAME_ENGLISH_CMD = "en_cmd";
 	
-	protected String SLOT_NAME_ENGLISH_STATEMENT = "en_st";
+	public String SLOT_NAME_ENGLISH_STATEMENT = "en_st";
 	
 	public EnglishScene(){
 		addSlot(SLOT_NAME_ENGLISH_CMD);
@@ -23,16 +23,10 @@ public abstract class EnglishScene extends AbstractDialog{
 		return Scene.SCENE_POEM;
 	}
 	
-	/**
-	 * 人称#内容
-	 */
-	@Override
-	protected abstract void addAsks();
 	
-	protected void addValue(String value){
+	public void addValue(String value){
 		addValue(SLOT_NAME_ENGLISH_STATEMENT, value);
 	}
-	
 	@Override
 	public void addRecogntionRule() {
 		Rule rule = new Rule();
@@ -43,5 +37,5 @@ public abstract class EnglishScene extends AbstractDialog{
 	public void addResponseRule(){
 		
 	}
-		
+
 }

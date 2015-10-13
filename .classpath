@@ -10,5 +10,9 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
 	<classpathentry kind="lib" path="libs/Msc.jar"/>
+	<classpathentry kind="lib" path="libs/reflections/annotations-2.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/reflections/guava-15.0.jar"/>
+	<classpathentry kind="lib" path="libs/reflections/javassist-3.19.0-GA.jar"/>
+	<classpathentry kind="lib" path="libs/reflections/reflections-0.9.10.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

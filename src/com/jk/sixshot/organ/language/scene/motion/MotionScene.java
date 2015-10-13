@@ -1,19 +1,19 @@
 package com.jk.sixshot.organ.language.scene.motion;
 
-import com.jk.sixshot.organ.language.scene.AbstractDialog;
+import com.jk.sixshot.organ.language.scene.AbstractScene;
 import com.jk.sixshot.organ.language.scene.Rule;
 import com.jk.sixshot.organ.language.scene.RuleSlot;
 import com.jk.sixshot.organ.language.scene.Scene;
 
-public abstract class MotionScene extends AbstractDialog{
+public class MotionScene extends AbstractScene<MotionScene>{
 
-	protected String SLOT_NAME_MOTION_PARTICLE = "mo_particle";
+	public String SLOT_NAME_MOTION_PARTICLE = "mo_particle";
 	
-	protected String SLOT_NAME_MOTION_DIRECTION = "mo_direction";
+	public String SLOT_NAME_MOTION_DIRECTION = "mo_direction";
 	
-	protected String SLOT_NAME_MOTION_CMD = "mo_cmd";
+	public String SLOT_NAME_MOTION_CMD = "mo_cmd";
 	
-	protected String SLOT_NAME_MOTION_SIGNLE_CMD = "mo_signle_cmd";
+	public String SLOT_NAME_MOTION_SIGNLE_CMD = "mo_signle_cmd";
 	
 	public MotionScene(){
 		addSlot(SLOT_NAME_MOTION_PARTICLE);
@@ -46,9 +46,11 @@ public abstract class MotionScene extends AbstractDialog{
 		return Scene.SCENE_CHAT;
 	}
 
-	@Override
-	protected abstract void addAsks();
 	
+	public void addValue(String value) {
+		addValue(SLOT_NAME_MOTION_SIGNLE_CMD, value);
+		
+	}
 	
 	@Override
 	public void addRecogntionRule() {
@@ -81,4 +83,5 @@ public abstract class MotionScene extends AbstractDialog{
 	
 	public void addResponseRule(){
 	}
+
 }

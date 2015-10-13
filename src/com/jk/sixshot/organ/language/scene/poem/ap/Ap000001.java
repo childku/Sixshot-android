@@ -1,9 +1,10 @@
 package com.jk.sixshot.organ.language.scene.poem.ap;
 
-import com.jk.sixshot.organ.language.scene.poem.PoemScene;
+import com.jk.sixshot.organ.language.scene.I;
+import com.jk.sixshot.organ.language.scene.poem.PoemDialog;
 
 
-public class Ap000001 extends PoemScene{
+public class Ap000001 extends PoemDialog implements I{
 
 	@Override
 	public void addAsks() {

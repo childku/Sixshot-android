@@ -1,7 +1,9 @@
 package com.jk.sixshot.organ.language.scene.chat;
 
+import com.jk.sixshot.organ.language.scene.I;
 
-public class Chat000002 extends ChatScene{
+
+public class Chat000002 extends ChatDialog implements I{
 
 	@Override
 	public void addAsks() {
@@ -15,5 +17,4 @@ public class Chat000002 extends ChatScene{
 		addResponse("你好，我是豆豆！");
 		addResponse("你好，有什么需要帮助的么？虽然我帮不了你太多。");
 	}
-
 }

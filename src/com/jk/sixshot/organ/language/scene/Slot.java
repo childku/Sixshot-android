@@ -24,7 +24,7 @@ public class Slot {
 	public void setValues(List<String> values) {
 		this.values = values;
 	}
-	
+
 	public void addValue(String value){
 		values.add(value);
 	}

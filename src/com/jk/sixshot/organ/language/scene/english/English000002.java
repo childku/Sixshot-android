@@ -1,6 +1,8 @@
 package com.jk.sixshot.organ.language.scene.english;
 
-public class English000002 extends EnglishScene{
+import com.jk.sixshot.organ.language.scene.I;
+
+public class English000002 extends EnglishDialog implements I{
 
 	@Override
 	public void addAsks() {

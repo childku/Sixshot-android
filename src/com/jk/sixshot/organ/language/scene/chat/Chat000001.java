@@ -1,7 +1,9 @@
 package com.jk.sixshot.organ.language.scene.chat;
 
+import com.jk.sixshot.organ.language.scene.I;
 
-public class Chat000001 extends ChatScene{
+
+public class Chat000001 extends ChatDialog implements I{
 
 	/**
 	 * 人称#内容

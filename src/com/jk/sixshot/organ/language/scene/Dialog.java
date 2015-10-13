@@ -6,43 +6,26 @@ import com.jk.sixshot.Response;
 
 /**
  * 对话
+ * 
  * @author child
  *
  */
-public interface Dialog {
+public interface Dialog<T> {
 
 	/**
-	 * 获取情景名称
+	 * 获取对话所属的情景
+	 * 
 	 * @return
 	 */
-	public String getSceneName();
+	public T getScene();
 	
 	/**
-	 * 语法规则
-	 * * ：代表若干个
-	 * _ ：代表一个
-	 * {}：代表情景
-	 * []：代表具体的情景
-	 * | ：代表 "或"
+	 * 获取问题
 	 * 
-	 * 例子
-	 * 1. {你[chat]}叫什么
-	 * 2. {你[chat]}你几岁了
+	 * @return
 	 */
 	public List<String> getAsks();
 	
 	public List<Response> getResponses(String statement);
 	
-	/**
-	 * 获取识别规则
-	 * 
-	 * @return
-	 */
-	public List<Rule> getRecognitionRules();
-	
-	/**
-	 * 获取响应规则
-	 * @return
-	 */
-	public List<String> getResponseRules();
 }

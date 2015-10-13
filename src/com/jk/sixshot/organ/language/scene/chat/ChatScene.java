@@ -1,21 +1,21 @@
 package com.jk.sixshot.organ.language.scene.chat;
 
-import com.jk.sixshot.organ.language.scene.AbstractDialog;
+import com.jk.sixshot.organ.language.scene.AbstractScene;
 import com.jk.sixshot.organ.language.scene.Rule;
 import com.jk.sixshot.organ.language.scene.RuleSlot;
 import com.jk.sixshot.organ.language.scene.Scene;
 
-public abstract class ChatScene extends AbstractDialog{
-
+public class ChatScene extends AbstractScene<ChatScene>{
+	
 	/**
 	 * 称谓
 	 */
-	protected String SLOT_NAME_CHAT_PERSON = "c_person";
+	public String SLOT_NAME_CHAT_PERSON = "c_person";
 	
 	/**
 	 * 内容
 	 */
-	protected String SLOT_NAME_CHAT_CONTENT = "c_content";
+	public String SLOT_NAME_CHAT_CONTENT = "c_content";
 	
 	public ChatScene(){
 		addSlot(SLOT_NAME_CHAT_PERSON);
@@ -30,10 +30,7 @@ public abstract class ChatScene extends AbstractDialog{
 		return Scene.SCENE_CHAT;
 	}
 
-	@Override
-	protected abstract void addAsks();
-	
-	protected void addValue(String value){
+	public void addValue(String value){
 		addValue(SLOT_NAME_CHAT_CONTENT, value);
 	}
 

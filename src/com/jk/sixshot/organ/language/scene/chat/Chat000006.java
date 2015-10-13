@@ -1,6 +1,8 @@
 package com.jk.sixshot.organ.language.scene.chat;
 
-public class Chat000006 extends ChatScene{
+import com.jk.sixshot.organ.language.scene.I;
+
+public class Chat000006 extends ChatDialog implements I{
 
 	@Override
 	public void addAsks() {
