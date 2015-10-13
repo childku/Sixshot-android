@@ -7,7 +7,6 @@ public class Rule {
 	
 	private List<RuleSlot> slots  = new ArrayList<RuleSlot>();
 	
-	private String rule;
 
 	public List<RuleSlot> getSlots() {
 		return slots;
@@ -22,12 +21,11 @@ public class Rule {
 	}
 
 	public String getRule() {
+		String rule = "";
+		for(RuleSlot rs : slots){
+			rule = rule + "-" + rs.getSlot().getName();
+		}
 		return rule;
 	}
-
-	public void setRule(String rule) {
-		this.rule = rule;
-	}
-	
 
 }

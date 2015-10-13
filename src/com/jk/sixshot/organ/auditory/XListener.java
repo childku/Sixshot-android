@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -37,8 +36,6 @@ public class XListener {
 	 
 	private Sixshot brain = null;
 	
-	
-	@SuppressLint("ShowToast") 
 	public  XListener(Sixshot brain){
 		this.brain  = brain;
 		initListener();

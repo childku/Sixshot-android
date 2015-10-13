@@ -2,17 +2,17 @@ package com.jk.sixshot.organ.language.scene.english;
 
 import com.jk.sixshot.organ.language.scene.AbstractScene;
 import com.jk.sixshot.organ.language.scene.Rule;
+import com.jk.sixshot.organ.language.scene.RuleSlot;
 import com.jk.sixshot.organ.language.scene.Scene;
 
 public class EnglishScene extends AbstractScene<EnglishScene>{
 
-	public String SLOT_NAME_ENGLISH_CMD = "en_cmd";
+	public static final String SLOT_NAME_ENGLISH_CMD = "en_cmd";
 	
-	public String SLOT_NAME_ENGLISH_STATEMENT = "en_st";
+	public static final String SLOT_NAME_ENGLISH_STATEMENT = "en_st";
 	
 	public EnglishScene(){
-		addSlot(SLOT_NAME_ENGLISH_CMD);
-		addSlot(SLOT_NAME_ENGLISH_STATEMENT);
+		super();
 		
 		addValue(SLOT_NAME_ENGLISH_CMD, "怎么说");
 		addValue(SLOT_NAME_ENGLISH_CMD, "用英语怎么说");
@@ -20,7 +20,7 @@ public class EnglishScene extends AbstractScene<EnglishScene>{
 	
 	@Override
 	public String getSceneName() {
-		return Scene.SCENE_POEM;
+		return Scene.SCENE_NAME_ENGLISH;
 	}
 	
 	
@@ -30,7 +30,13 @@ public class EnglishScene extends AbstractScene<EnglishScene>{
 	@Override
 	public void addRecogntionRule() {
 		Rule rule = new Rule();
-		rule.setRule("<" + SLOT_NAME_ENGLISH_STATEMENT  + "><" + SLOT_NAME_ENGLISH_CMD + ">");
+		
+		RuleSlot cmdSlot = new RuleSlot(true, getSlot(SLOT_NAME_ENGLISH_CMD)); 
+		RuleSlot statementSlot = new RuleSlot(getSlot(SLOT_NAME_ENGLISH_STATEMENT)); 
+		
+		rule.addSlot(cmdSlot);
+		rule.addSlot(statementSlot);
+		
 		recognitionRules.add(rule);
 	}
 	

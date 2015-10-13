@@ -7,11 +7,13 @@ import com.jk.sixshot.organ.language.scene.Scene;
 
 public class PoemScene extends AbstractScene<PoemScene>{
 
-	public String SLOT_NAME_POEM_CMD = "poem_cmd";
+	public static final String SLOT_NAME_POEM_CMD = "poem_cmd";
 	
-	public String SLOT_NAME_POEM_NAME = "poem_name";
+	public static final String SLOT_NAME_POEM_NAME = "poem_name";
 	
 	public PoemScene(){
+		super();
+		
 		addValue(SLOT_NAME_POEM_CMD, "背");
 		addValue(SLOT_NAME_POEM_CMD, "背首");
 		addValue(SLOT_NAME_POEM_CMD, "背一首");
@@ -21,7 +23,7 @@ public class PoemScene extends AbstractScene<PoemScene>{
 	
 	@Override
 	public String getSceneName() {
-		return Scene.SCENE_POEM;
+		return Scene.SCENE_NAME_POEM;
 	}
 	
 	protected void addValue(String value){

@@ -123,8 +123,7 @@ public class Arithmetic extends ArithmeticDialog implements I{
 	}
 
 	@Override
-	protected void addResponse() {
-		// TODO Auto-generated method stub
+	public void addResponse() {
 	}
 
 

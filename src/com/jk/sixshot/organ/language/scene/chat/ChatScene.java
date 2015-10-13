@@ -10,24 +10,20 @@ public class ChatScene extends AbstractScene<ChatScene>{
 	/**
 	 * 称谓
 	 */
-	public String SLOT_NAME_CHAT_PERSON = "c_person";
+	public static final String SLOT_NAME_CHAT_PERSON = "c_person";
 	
 	/**
 	 * 内容
 	 */
-	public String SLOT_NAME_CHAT_CONTENT = "c_content";
+	public static final String SLOT_NAME_CHAT_CONTENT = "c_content";
 	
 	public ChatScene(){
-		addSlot(SLOT_NAME_CHAT_PERSON);
-		addSlot(SLOT_NAME_CHAT_CONTENT);
-		
-		addValue(SLOT_NAME_CHAT_PERSON, "{你[" + Scene.SCENE_CHAT + "]}");
-		addValue(SLOT_NAME_CHAT_PERSON, "豆豆");
+		super();
 	}
 	
 	@Override
 	public String getSceneName() {
-		return Scene.SCENE_CHAT;
+		return Scene.SCENE_NAME_CHAT;
 	}
 
 	public void addValue(String value){
@@ -48,6 +44,6 @@ public class ChatScene extends AbstractScene<ChatScene>{
 	}
 	
 	public void addResponseRule(){
-		responseRules.add("<" + SLOT_NAME_CHAT_PERSON +"><" + SLOT_NAME_CHAT_CONTENT + ">");
+//		responseRules.add("<" + SLOT_NAME_CHAT_PERSON +"><" + SLOT_NAME_CHAT_CONTENT + ">");
 	}
 }

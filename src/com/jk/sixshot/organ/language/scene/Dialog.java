@@ -26,6 +26,6 @@ public interface Dialog<T> {
 	 */
 	public List<String> getAsks();
 	
-	public List<Response> getResponses(String statement);
+	public List<Response> getResponses();
 	
 }

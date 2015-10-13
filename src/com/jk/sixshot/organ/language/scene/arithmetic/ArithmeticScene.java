@@ -7,23 +7,24 @@ import com.jk.sixshot.organ.language.scene.Scene;
 
 public class ArithmeticScene extends AbstractScene<ArithmeticScene>{
 
-	public String SLOT_NAME_CACULATE_CMD = "ca_cmd";
+	public static final String SLOT_NAME_CACULATE_CMD = "ca_cmd";
 	
-	public String SLOT_NAME_CACULATE_NUMBER = "ca_number";
+	public static final String SLOT_NAME_CACULATE_NUMBER = "ca_number";
 	
-	public String SLOT_NAME_CACULATE_RESULT = "ca_result";
+	public static final String SLOT_NAME_CACULATE_RESULT = "ca_result";
 	
 	
 	public ArithmeticScene(){
+		super();
+		
 		addSlot(SLOT_NAME_CACULATE_CMD);
 		addSlot(SLOT_NAME_CACULATE_NUMBER);
 		addSlot(SLOT_NAME_CACULATE_RESULT);
-		
 	}
 	
 	@Override
 	public String getSceneName() {
-		return Scene.SCENE_ARITHMETIC;
+		return Scene.SCENE_NAME_ARITHMETIC;
 	}
 
 	@Override

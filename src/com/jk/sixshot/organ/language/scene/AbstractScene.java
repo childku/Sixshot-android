@@ -15,7 +15,14 @@ public abstract class AbstractScene<T> implements Scene<T>{
 	
 	private Map<String, Slot> slots = new HashMap<String, Slot>();
 	
+	public AbstractScene(){
+		addRecogntionRule();
+		addResponseRule();
+	}
 	
+	public List<Slot> getSlots(){
+		return new ArrayList<Slot>(slots.values());
+	}
 	@Override
 	public List<Rule> getRecognitionRules() {
 		return recognitionRules;
@@ -27,6 +34,9 @@ public abstract class AbstractScene<T> implements Scene<T>{
 	}
 	
 	protected void addSlot(String slotName){
+		if(slots.containsKey(slotName)){
+			return ;
+		}
 		Slot slot = new Slot();
 		slot.setName(slotName);
 		
@@ -43,12 +53,29 @@ public abstract class AbstractScene<T> implements Scene<T>{
 	 * @param slotName
 	 * @param value
 	 */
+	@Override
 	public void addValue(String slotName, String value){
-		slots.get(slotName).addValue(value);
+//		System.out.println("--slot name is " + slotName);
+		if(slots.containsKey(slotName)){
+			slots.get(slotName).addValue(value);
+		}else{
+			Slot slot = new Slot();
+			slot.setName(slotName);
+			slots.put(slotName, slot);
+			slot.addValue(value);
+		}
 	}
 	
-	protected Slot getSlot(String slotName){
-		return slots.get(slotName);
+	@Override
+	public Slot getSlot(String slotName){
+		if(slots.containsKey(slotName)){
+			return slots.get(slotName);
+		}else{
+			Slot slot = new Slot();
+			slot.setName(slotName);
+			slots.put(slotName, slot);
+			return slot;
+		}
 	}
 	
 }

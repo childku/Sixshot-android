@@ -8,7 +8,7 @@ public class Motion000001 extends MotionDialog implements I{
 
 	@Override
 	public void addAsks() {
-		addValue(MotionScene.SCENE_ARITHMETIC, "转一个");
+		addValue(MotionScene.SCENE_NAME_ARITHMETIC, "转一个");
 	}
 
 	@Override

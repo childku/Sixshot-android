@@ -17,13 +17,13 @@ public abstract class AbstractDialog<T> implements Dialog<T>{
 	}
 	
 	@Override
-	public List<Response> getResponses(String statement) {
+	public List<Response> getResponses() {
 		return responses;
 	}
 	
-	protected abstract void addAsks();
+	public abstract void addAsks();
 	
-	protected abstract void addResponse();
+	public abstract void addResponse();
 	
 	protected void addResponse(Response response){
 		responses.add(response);
@@ -34,7 +34,7 @@ public abstract class AbstractDialog<T> implements Dialog<T>{
 	 * 
 	 * @param instruction
 	 */
-	protected void addResponse(String instruction){
+	public void addResponse(String instruction){
 		Response response = new Response();
 		response.setType(Response.RESPONSE_TYPE_LANGUAGE);
 		response.setInstruction(instruction);

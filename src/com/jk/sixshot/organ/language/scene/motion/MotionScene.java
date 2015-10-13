@@ -7,19 +7,16 @@ import com.jk.sixshot.organ.language.scene.Scene;
 
 public class MotionScene extends AbstractScene<MotionScene>{
 
-	public String SLOT_NAME_MOTION_PARTICLE = "mo_particle";
+	public static final String SLOT_NAME_MOTION_PARTICLE = "mo_particle";
 	
-	public String SLOT_NAME_MOTION_DIRECTION = "mo_direction";
+	public static final String SLOT_NAME_MOTION_DIRECTION = "mo_direction";
 	
-	public String SLOT_NAME_MOTION_CMD = "mo_cmd";
+	public static final String SLOT_NAME_MOTION_CMD = "mo_cmd";
 	
-	public String SLOT_NAME_MOTION_SIGNLE_CMD = "mo_signle_cmd";
+	public static final String SLOT_NAME_MOTION_SIGNLE_CMD = "mo_signle_cmd";
 	
 	public MotionScene(){
-		addSlot(SLOT_NAME_MOTION_PARTICLE);
-		addSlot(SLOT_NAME_MOTION_DIRECTION);
-		addSlot(SLOT_NAME_MOTION_CMD);
-		addSlot(SLOT_NAME_MOTION_SIGNLE_CMD);
+		super();
 		
 		addValue(SLOT_NAME_MOTION_PARTICLE, "往");
 		addValue(SLOT_NAME_MOTION_PARTICLE, "向");
@@ -43,7 +40,7 @@ public class MotionScene extends AbstractScene<MotionScene>{
 	
 	@Override
 	public String getSceneName() {
-		return Scene.SCENE_CHAT;
+		return Scene.SCENE_NAME_MOTION;
 	}
 
 	
@@ -55,11 +52,6 @@ public class MotionScene extends AbstractScene<MotionScene>{
 	@Override
 	public void addRecogntionRule() {
 		Rule rule = new Rule();
-		rule.setRule("<" + SLOT_NAME_MOTION_PARTICLE  + "><" + SLOT_NAME_MOTION_DIRECTION + ">[<" + SLOT_NAME_MOTION_CMD  + ">]");
-		recognitionRules.add(rule);
-		
-		rule = new Rule();
-		rule.setRule("<" + SLOT_NAME_MOTION_SIGNLE_CMD + ">");
 		
 		RuleSlot particleSlot = new RuleSlot(getSlot(SLOT_NAME_MOTION_PARTICLE)); 
 		RuleSlot directionSlot = new RuleSlot(getSlot(SLOT_NAME_MOTION_DIRECTION)); 
