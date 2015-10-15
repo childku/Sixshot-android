@@ -39,7 +39,7 @@ void Java_com_jk_sixshot_motion_Motion_init( JNIEnv* env, jobject thiz )
 	char* result;
 
 	result = execute_cmd("su -c '(\
-			echo 93 > /sys/class/gpio/export';\
+			echo 93 > /sys/class/gpio/export;\
 			echo out > /sys/class/gpio/gpio93/direction;\
 			echo 94 > /sys/class/gpio/export;\
 			echo out > /sys/class/gpio/gpio94/direction;\
@@ -47,8 +47,7 @@ void Java_com_jk_sixshot_motion_Motion_init( JNIEnv* env, jobject thiz )
 			echo out > /sys/class/gpio/gpio95/direction;\
 			echo 96 > /sys/class/gpio/export;\
 			echo out > /sys/class/gpio/gpio96/direction\
-			)");
-
+			)'");
 
 	LOGD("init result is : %s", result);
 }

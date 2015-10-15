@@ -5,6 +5,7 @@ import com.jk.sixshot.organ.language.scene.I;
 
 public class Arithmetic extends ArithmeticDialog implements I{
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public void addAsks() {
 		addValue(getScene().SLOT_NAME_CACULATE_CMD, "加");
