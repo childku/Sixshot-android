@@ -37,7 +37,7 @@ public class Sixshot extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		// 设置你申请的应用appid
 		StringBuffer param = new StringBuffer();
-		param.append("appid=5423b564");
+		param.append("appid=561eff49");
 		param.append(",");
 		// 设置使用v5+
 		param.append(SpeechConstant.ENGINE_MODE+"="+SpeechConstant.MODE_MSC);
