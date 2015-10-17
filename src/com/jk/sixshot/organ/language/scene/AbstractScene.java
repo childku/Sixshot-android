@@ -16,6 +16,8 @@ public abstract class AbstractScene<T> implements Scene<T>{
 	private Map<String, Slot> slots = new HashMap<String, Slot>();
 	
 	public AbstractScene(){
+		System.out.println("AbstractScene is created. clsss is " + this.getClass().getName());
+		
 		addRecogntionRule();
 		addResponseRule();
 	}
@@ -46,6 +48,8 @@ public abstract class AbstractScene<T> implements Scene<T>{
 	protected abstract void addRecogntionRule();
 	
 	protected abstract void addResponseRule();
+	
+//	protected abstract void addRecogntionRule();
 	
 	/**
 	 * 向给定名称的 slot 内添加值

@@ -19,6 +19,11 @@ public class ChatScene extends AbstractScene<ChatScene>{
 	
 	public ChatScene(){
 		super();
+//		addRecogntionRule();
+//		addResponseRule();
+		System.out.println("ChatScene is created.");
+		addValue(SLOT_NAME_CHAT_PERSON, "你");
+		addValue(SLOT_NAME_CHAT_PERSON, "豆豆");
 	}
 	
 	@Override
@@ -37,8 +42,8 @@ public class ChatScene extends AbstractScene<ChatScene>{
 		RuleSlot personSlot = new RuleSlot(true, getSlot(SLOT_NAME_CHAT_PERSON)); 
 		RuleSlot contentSlot = new RuleSlot(getSlot(SLOT_NAME_CHAT_CONTENT)); 
 		
-		rule.addSlot(personSlot);
-		rule.addSlot(contentSlot);
+		rule.addRuleSlot(personSlot);
+		rule.addRuleSlot(contentSlot);
 		
 		recognitionRules.add(rule);
 	}

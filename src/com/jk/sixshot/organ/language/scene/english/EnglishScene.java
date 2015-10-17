@@ -34,8 +34,8 @@ public class EnglishScene extends AbstractScene<EnglishScene>{
 		RuleSlot cmdSlot = new RuleSlot(true, getSlot(SLOT_NAME_ENGLISH_CMD)); 
 		RuleSlot statementSlot = new RuleSlot(getSlot(SLOT_NAME_ENGLISH_STATEMENT)); 
 		
-		rule.addSlot(cmdSlot);
-		rule.addSlot(statementSlot);
+		rule.addRuleSlot(cmdSlot);
+		rule.addRuleSlot(statementSlot);
 		
 		recognitionRules.add(rule);
 	}

@@ -57,9 +57,9 @@ public class MotionScene extends AbstractScene<MotionScene>{
 		RuleSlot directionSlot = new RuleSlot(getSlot(SLOT_NAME_MOTION_DIRECTION)); 
 		RuleSlot cmdSlot = new RuleSlot(true, getSlot(SLOT_NAME_MOTION_CMD)); 
 		
-		rule.addSlot(particleSlot);
-		rule.addSlot(directionSlot);
-		rule.addSlot(cmdSlot);
+		rule.addRuleSlot(particleSlot);
+		rule.addRuleSlot(directionSlot);
+		rule.addRuleSlot(cmdSlot);
 		
 		recognitionRules.add(rule);
 		
@@ -68,7 +68,7 @@ public class MotionScene extends AbstractScene<MotionScene>{
 		
 		RuleSlot signelSlot = new RuleSlot(getSlot(SLOT_NAME_MOTION_SIGNLE_CMD)); 
 		
-		rule.addSlot(signelSlot);
+		rule.addRuleSlot(signelSlot);
 		
 		recognitionRules.add(rule);
 	}

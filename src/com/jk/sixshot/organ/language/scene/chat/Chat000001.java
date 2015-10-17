@@ -5,10 +5,6 @@ import com.jk.sixshot.organ.language.scene.I;
 
 public class Chat000001 extends ChatDialog implements I{
 
-	/**
-	 * 人称#内容
-	 */
-	
 	@Override
 	public void addAsks() {
 		addValue("豆豆");

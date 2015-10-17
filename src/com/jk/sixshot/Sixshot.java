@@ -249,6 +249,7 @@ public class Sixshot extends Activity {
 // 教英语
 // 学习
 // 创作，互联网...
+// 降噪技术专利
 	
 //	android update project -p . --target android-19 -s
 //	ndk-build

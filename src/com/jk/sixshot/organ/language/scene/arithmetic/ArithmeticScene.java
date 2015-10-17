@@ -36,10 +36,10 @@ public class ArithmeticScene extends AbstractScene<ArithmeticScene>{
 		RuleSlot n2Slot = new RuleSlot( getSlot(SLOT_NAME_CACULATE_NUMBER)); 
 		RuleSlot resultSlot = new RuleSlot(getSlot(SLOT_NAME_CACULATE_RESULT));
 		
-		rule.addSlot(n1Slot);
-		rule.addSlot(cmdSlot);
-		rule.addSlot(n2Slot);
-		rule.addSlot(resultSlot);
+		rule.addRuleSlot(n1Slot);
+		rule.addRuleSlot(cmdSlot);
+		rule.addRuleSlot(n2Slot);
+		rule.addRuleSlot(resultSlot);
 		
 		recognitionRules.add(rule);
 		

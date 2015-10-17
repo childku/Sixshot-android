@@ -37,8 +37,8 @@ public class PoemScene extends AbstractScene<PoemScene>{
 		RuleSlot cmdSlot = new RuleSlot(getSlot(SLOT_NAME_POEM_CMD)); 
 		RuleSlot nameSlot = new RuleSlot(getSlot(SLOT_NAME_POEM_NAME)); 
 		
-		rule.addSlot(cmdSlot);
-		rule.addSlot(nameSlot);
+		rule.addRuleSlot(cmdSlot);
+		rule.addRuleSlot(nameSlot);
 		
 		recognitionRules.add(rule);
 	}

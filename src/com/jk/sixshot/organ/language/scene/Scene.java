@@ -18,10 +18,10 @@ public interface Scene<T> {
 	
 	
 	public static final ChatScene SCENE_CHAT = new ChatScene();
-	public Scene<PoemScene> SCENE_POEM = new PoemScene();
-	public Scene<ArithmeticScene> SCENE_ARITHMETIC = new ArithmeticScene();
-	public Scene<EnglishScene> SCENE_ENGLISH = new EnglishScene();
-	public Scene<MotionScene> SCENE_MOTION = new MotionScene();
+	public static final PoemScene SCENE_POEM = new PoemScene();
+	public static final ArithmeticScene SCENE_ARITHMETIC = new ArithmeticScene();
+	public static final EnglishScene SCENE_ENGLISH = new EnglishScene();
+	public static final MotionScene SCENE_MOTION = new MotionScene();
 	/**
 	 * 获取情景名称
 	 * 
