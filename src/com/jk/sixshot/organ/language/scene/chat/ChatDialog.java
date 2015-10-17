@@ -12,6 +12,7 @@ public abstract class ChatDialog extends AbstractDialog<ChatScene>{
 	}
 
 	public void addValue(String value){
+		addAsk(value);
 		getScene().addValue(value);
 	}
 

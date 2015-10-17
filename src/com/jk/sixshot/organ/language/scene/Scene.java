@@ -1,7 +1,9 @@
 package com.jk.sixshot.organ.language.scene;
 
 import java.util.List;
+import java.util.Map;
 
+import com.jk.sixshot.Response;
 import com.jk.sixshot.organ.language.scene.arithmetic.ArithmeticScene;
 import com.jk.sixshot.organ.language.scene.chat.ChatScene;
 import com.jk.sixshot.organ.language.scene.english.EnglishScene;
@@ -31,6 +33,8 @@ public interface Scene<T> {
 	
 	public void addValue(String slotName, String value);
 	
+	public void addResponse(List<String> asks, Response response);
+	
 	public Slot getSlot(String slotName);
 	
 	public List<Slot> getSlots();
@@ -48,5 +52,7 @@ public interface Scene<T> {
 	 * @return
 	 */
 	public List<String> getResponseRules();
+	
+	public Map<List<String>, List<Response>> getResponses();
 
 }

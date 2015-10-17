@@ -9,24 +9,23 @@ import com.jk.sixshot.Response;
 public abstract class AbstractDialog<T> implements Dialog<T>{
 
 	protected List<String> asks = new ArrayList<String>();
-	protected List<Response> responses = new ArrayList<Response>();
 	
 	@Override
 	public List<String> getAsks() {
 		return asks;
 	}
 	
-	@Override
-	public List<Response> getResponses() {
-		return responses;
-	}
-	
 	public abstract void addAsks();
 	
-	public abstract void addResponse();
+	public abstract void addResponses();
 	
+	public void addAsk(String ask){
+		asks.add(ask);
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void addResponse(Response response){
-		responses.add(response);
+		((Scene)getScene()).addResponse(getAsks(), response);
 	}
 	
 	/**

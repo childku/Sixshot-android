@@ -11,6 +11,7 @@ public abstract class PoemDialog extends AbstractDialog<PoemScene>{
 	}
 	
 	public void addValue(String value){
+		addAsk(value);
 		getScene().addValue(value);
 	}
 

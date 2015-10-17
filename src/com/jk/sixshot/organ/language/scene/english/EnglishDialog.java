@@ -11,6 +11,7 @@ public abstract class EnglishDialog extends AbstractDialog<EnglishScene>{
 	}
 	
 	public void addValue(String value){
+		addAsk(value);
 		getScene().addValue(value);
 	}
 

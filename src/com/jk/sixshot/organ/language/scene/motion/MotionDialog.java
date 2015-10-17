@@ -11,6 +11,7 @@ public abstract class MotionDialog extends AbstractDialog<MotionScene>{
 	}
 	
 	public void addValue(String value){
+		addAsk(value);
 		getScene().addValue(value);
 	}
 

@@ -12,7 +12,7 @@ public class Motion000001 extends MotionDialog implements I{
 	}
 
 	@Override
-	public void addResponse() {
+	public void addResponses() {
 //		answers.add("《登鹳雀楼》，作者：盛唐诗人，王之涣。白日依山尽，黄河入海流。欲穷千里目，更上一层楼。");
 	}
 

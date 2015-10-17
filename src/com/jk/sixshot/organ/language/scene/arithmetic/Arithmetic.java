@@ -124,7 +124,7 @@ public class Arithmetic extends ArithmeticDialog implements I{
 	}
 
 	@Override
-	public void addResponse() {
+	public void addResponses() {
 	}
 
 

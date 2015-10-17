@@ -2,6 +2,7 @@ package com.jk.sixshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.reflections.Reflections;
@@ -43,7 +44,7 @@ public class T {
 				dialog = (AbstractDialog<Scene>)c.newInstance();
 				
 				dialog.addAsks();
-				dialog.addResponse();
+				dialog.addResponses();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,13 +58,29 @@ public class T {
 		scenes.add(Scene.SCENE_MOTION);
 		scenes.add(Scene.SCENE_POEM);
 		
+		List<String> asks = null;
+		List<Response> responses = null;
+		String ress = "";
+		
 		for(Scene scene : scenes){
-		System.out.println("--------scene is " + "char");
+			System.out.println("--------scene is " + scene.getSceneName());
 			for(Rule rule :(List<Rule>)scene.getRecognitionRules()){
 				System.out.println("    " + rule.getRule());
 				for(RuleSlot ruleSlot :rule.getRuleSlots()){
 					System.out.println("      " + ruleSlot.getSlot().getName() + "  values: " + ruleSlot.getSlot().getValues());
 				}
+			}
+			scene.getResponses().entrySet();
+			for(Entry<List<String>, List<Response>> e : (Set<Entry<List<String>, List<Response>>>)scene.getResponses().entrySet()){
+				ress = "";
+				asks = e.getKey();
+				responses = e.getValue();
+				System.out.println("--aaaaaa----asks is " + asks.toString());
+				for(Response r : responses){
+					ress = ress + "|" + r.getInstruction();
+				}
+				System.out.println("--------responses is " + ress);
+				
 			}
 		}
 	}

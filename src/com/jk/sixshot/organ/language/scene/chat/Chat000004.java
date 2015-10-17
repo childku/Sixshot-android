@@ -14,7 +14,7 @@ public class Chat000004 extends ChatDialog implements I{
 	}
 
 	@Override
-	public void addResponse() {
+	public void addResponses() {
 		addResponse("我三岁了");
 		addResponse("我三岁了，你呢？");
 		addResponse("今年我三岁");

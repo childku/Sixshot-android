@@ -5,12 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jk.sixshot.Response;
+
 
 public abstract class AbstractScene<T> implements Scene<T>{
 
 	protected List<Rule> recognitionRules = new ArrayList<Rule>();
 
 	protected List<String> responseRules = new ArrayList<String>();
+	
+	protected Map<List<String>, List<Response>> responses = new HashMap<List<String>, List<Response>>();
 	
 	
 	private Map<String, Slot> slots = new HashMap<String, Slot>();
@@ -45,6 +49,10 @@ public abstract class AbstractScene<T> implements Scene<T>{
 		slots.put(slotName, slot);
 	}
 
+	public Map<List<String>, List<Response>> getResponses(){
+		return responses;
+	}
+	
 	protected abstract void addRecogntionRule();
 	
 	protected abstract void addResponseRule();
@@ -67,6 +75,16 @@ public abstract class AbstractScene<T> implements Scene<T>{
 			slot.setName(slotName);
 			slots.put(slotName, slot);
 			slot.addValue(value);
+		}
+	}
+	
+	public void addResponse(List<String> asks, Response response){
+		if(responses.containsKey(asks)){
+			responses.get(asks).add(response);
+		}else{
+			List<Response> reses = new ArrayList<Response>();
+			reses.add(response);
+			responses.put(asks, reses);
 		}
 	}
 	

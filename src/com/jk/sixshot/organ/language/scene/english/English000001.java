@@ -10,7 +10,7 @@ public class English000001 extends EnglishDialog implements I{
 	}
 
 	@Override
-	public void addResponse() {
+	public void addResponses() {
 		addResponse("dad");
 	}
 

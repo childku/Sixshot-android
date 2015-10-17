@@ -11,7 +11,7 @@ public class Chat000005 extends ChatDialog implements I{
 	}
 
 	@Override
-	public void addResponse() {
+	public void addResponses() {
 		addResponse("我属兔");
 		addResponse("我属兔的，小白兔的兔？");
 		addResponse("我属小白兔的");
