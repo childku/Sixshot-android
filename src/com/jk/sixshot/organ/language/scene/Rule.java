@@ -1,7 +1,9 @@
 package com.jk.sixshot.organ.language.scene;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Rule {
 	
@@ -10,6 +12,16 @@ public class Rule {
 
 	public List<RuleSlot> getRuleSlots() {
 		return ruleSlots;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<RuleSlot> getDistinctedRuleSlots() {
+		Map<String, RuleSlot> map = new HashMap<String, RuleSlot>();
+		for(RuleSlot rs : ruleSlots){
+			map.put(rs.getSlot().getName(), rs);
+		}
+		
+		return new ArrayList(map.values());
 	}
 
 	public void setRuleSlots(List<RuleSlot> ruleSlots) {
@@ -23,7 +35,11 @@ public class Rule {
 	public String getRule() {
 		String rule = "";
 		for(RuleSlot rs : ruleSlots){
-			rule = rule + "-" + rs.getSlot().getName();
+			if(rs.isOptional()){
+				rule = rule + "[<" + rs.getSlot().getName() + ">]";
+			}else{
+				rule = rule + "<" + rs.getSlot().getName() + ">";
+			}
 		}
 		return rule;
 	}
